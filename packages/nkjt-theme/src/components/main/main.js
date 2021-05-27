@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { connect, styled } from "frontity";
 import Switch from "@frontity/components/switch";
 
+import App from "../daily/App"
+import Video from "./video";
+
 import List from "./list";
 import Post from "./post";
 import Page from "./page";
@@ -19,7 +22,9 @@ const Main = ({ state }) => {
      
     return (
         <MainContainer>
-            <ColumnContainer>
+          {/* <Video/> */}
+          <App/>
+            {/* <ColumnContainer>
                 <Column>
                     <h3>Hej och välkommen till NJKT</h3>
                     <p>Vi hjälper döva, hörselskadade och dövblinda kvinnor, icke-binära och unga tjejer från 15 år och uppåt, med att ta makten över sina liv från våld och förtryck.
@@ -99,7 +104,7 @@ const Main = ({ state }) => {
                         </RoomLinkContainer>     
                     </ButtonContainer>
                 </Column>
-            </ColumnContainer>
+            </ColumnContainer> */}
             <Switch>
                 <List when={data.isArchive} />
                 <Post when={data.isPost} />
