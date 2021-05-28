@@ -1,4 +1,5 @@
-const newRoomEndpoint = 'http://localhost:8080/rooms'
+// const newRoomEndpoint =
+//   `${window.location.origin}/api/rooms`;
 
 /**
  * Create a short-lived room for demo purposes.
@@ -10,21 +11,21 @@ const newRoomEndpoint = 'http://localhost:8080/rooms'
  * See https://docs.daily.co/reference#create-room for more information on how
  * to use the Daily REST API to create rooms and what options are available. 
  */
-const createRoom = async () => {
+async function createRoom() {
 
-  const exp = Math.round(Date.now() / 1000) + 60 * 30
+  // const exp = Math.round(Date.now() / 1000) + 60 * 30;
   // const options = {
   //   properties: {
   //     exp: exp,
   //   },
   // };
-  let response = await fetch(newRoomEndpoint, {
-    method: "POST",
-    body: JSON.stringify({exp}),
-    mode: 'cors'
-  })
-    let room = await response.json();
-  return room;
+  // let response = await fetch(newRoomEndpoint, {
+  //   method: "POST",
+  //   body: JSON.stringify(options),
+  //   mode: 'cors',
+  // }),
+  //   room = await response.json();
+  // return room;
 
   // Comment out the above and uncomment the below, using your own URL
   return { url: "https://nkjt-team.daily.co/nkjt-test" };
