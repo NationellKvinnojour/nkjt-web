@@ -7,7 +7,6 @@ import Footer from "./footer/footer";
 import gutenbergStyle from "./style.css";
 import gutenbergTheme from "./theme.css";
 
-
 const Root = () => {
 
   return (

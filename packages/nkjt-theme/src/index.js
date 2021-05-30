@@ -12,10 +12,10 @@ const nkjtTheme = {
   },
   state: {
     theme: {
-      autoPrefetch: "in-view",
+      // autoPrefetch: "in-view",
       menu: [],
       menuUrl: "navbar-menu",
-      isMobileMenuOpen: false,
+      // isMobileMenuOpen: false,
       featured: {
         showOnList: false,
         showOnPost: false,
@@ -24,12 +24,12 @@ const nkjtTheme = {
   },
   actions: {
     theme: {
-      toggleMobileMenu: ({ state }) => {
-        state.theme.isMobileMenuOpen = !state.theme.isMobileMenuOpen;
-      },
-      closeMobileMenu: ({ state }) => {
-        state.theme.isMobileMenuOpen = false;
-      },
+      // toggleMobileMenu: ({ state }) => {
+      //   state.theme.isMobileMenuOpen = !state.theme.isMobileMenuOpen;
+      // },
+      // closeMobileMenu: ({ state }) => {
+      //   state.theme.isMobileMenuOpen = false;
+      // },
       beforeSSR: async ({ state, actions }) => {
         await actions.source.fetch(`/menu/${state.theme.menuUrl}`);
       }
@@ -38,11 +38,11 @@ const nkjtTheme = {
   libraries: {
     html2react: {
       processors: [link, image, iframe]
+    },
+    source: {
+      handlers: [menuHandler],
     }
   },
-  source: {
-    handlers: [menuHandler],
-  }
 };
 
 export default nkjtTheme;

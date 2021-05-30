@@ -3,7 +3,8 @@ import { connect, styled } from "frontity";
 import Link from "@frontity/components/link";
 
 import Nav from "./nav";
-import MobileMenu from "./menu"
+// import MobileMenu from "./menu";
+import MobileMenu from "./mobile-menu";
 
 const Header = () => {
     return (
