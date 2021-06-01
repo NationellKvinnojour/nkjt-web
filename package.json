@@ -23,8 +23,10 @@
     "@frontity/mars-theme": "./packages/mars-theme",
     "@frontity/tiny-router": "^1.4.2",
     "@frontity/wp-source": "^1.11.4",
+    "@orballo/very-tiny-router": "^0.1.2",
     "dayjs": "^1.10.4",
     "frontity": "^1.15.0",
-    "nkjt-theme": "file:packages/nkjt-theme"
+    "nkjt-theme": "file:packages/nkjt-theme",
+    "react-router-dom": "^5.2.0"
   }
 }

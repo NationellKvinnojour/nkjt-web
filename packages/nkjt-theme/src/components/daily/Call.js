@@ -1,187 +1,102 @@
-import React, { useEffect, useContext, useReducer, useCallback } from 'react';
-// import './Call.css';
-import Tile from './Tile';
-import CallObjectContext from './CallObjectContext';
-import CallMessage from './CallMessage';
-import {
-  initialCallState,
-  CLICK_ALLOW_TIMEOUT,
-  PARTICIPANTS_CHANGE,
-  CAM_OR_MIC_ERROR,
-  FATAL_ERROR,
-  callReducer,
-  isLocal,
-  isScreenShare,
-  containsScreenShare,
-  getMessage,
-} from './callState';
-import { logDailyEvent } from './logUtils';
+import React, { useRef, useEffect, useState } from "react"
+import DailyIframe from "@daily-co/daily-js"
+import { styled } from "frontity"
 
-export default function Call() {
-  const callObject = useContext(CallObjectContext);
-  const [callState, dispatch] = useReducer(callReducer, initialCallState);
+// const handleEvent = (event, room) => {
+//   fetch(`http://localhost:8080/nkjt-rooms/`, {
+//     method: "PATCH",
+//     body: JSON.stringify({ event, room }),
+//   })
+//     .then((res) => res.json())
+//     .then((json) => console.log(json))
+//     .catch((err) => console.log("Error: " + err))
+// }
 
-  /**
-   * Start listening for participant changes, when the callObject is set.
-   */
-  useEffect(() => {
-    if (!callObject) return;
-
-    const events = [
-      'participant-joined',
-      'participant-updated',
-      'participant-left',
-    ];
-
-    function handleNewParticipantsState(event) {
-      event && logDailyEvent(event);
-      dispatch({
-        type: PARTICIPANTS_CHANGE,
-        participants: callObject.participants(),
-      });
-    }
-
-    // Use initial state
-    handleNewParticipantsState();
-
-    // Listen for changes in state
-    for (const event of events) {
-      callObject.on(event, handleNewParticipantsState);
-    }
-
-    // Stop listening for changes in state
-    return function cleanup() {
-      for (const event of events) {
-        callObject.off(event, handleNewParticipantsState);
-      }
-    };
-  }, [callObject]);
-
-  /**
-   * Start listening for call errors, when the callObject is set.
-   */
-  useEffect(() => {
-    if (!callObject) return;
-
-    function handleCameraErrorEvent(event) {
-      logDailyEvent(event);
-      dispatch({
-        type: CAM_OR_MIC_ERROR,
-        message:
-          (event && event.errorMsg && event.errorMsg.errorMsg) || 'Unknown',
-      });
-    }
-
-    // We're making an assumption here: there is no camera error when callObject
-    // is first assigned.
-
-    callObject.on('camera-error', handleCameraErrorEvent);
-
-    return function cleanup() {
-      callObject.off('camera-error', handleCameraErrorEvent);
-    };
-  }, [callObject]);
-
-  /**
-   * Start listening for fatal errors, when the callObject is set.
-   */
-  useEffect(() => {
-    if (!callObject) return;
-
-    function handleErrorEvent(e) {
-      logDailyEvent(e);
-      dispatch({
-        type: FATAL_ERROR,
-        message: (e && e.errorMsg) || 'Unknown',
-      });
-    }
-
-    // We're making an assumption here: there is no error when callObject is
-    // first assigned.
-
-    callObject.on('error', handleErrorEvent);
-
-    return function cleanup() {
-      callObject.off('error', handleErrorEvent);
-    };
-  }, [callObject]);
-
-  /**
-   * Start a timer to show the "click allow" message, when the component mounts.
-   */
-  useEffect(() => {
-    const t = setTimeout(() => {
-      dispatch({ type: CLICK_ALLOW_TIMEOUT });
-    }, 2500);
-
-    return function cleanup() {
-      clearTimeout(t);
-    };
-  }, []);
-
-  /**
-   * Send an app message to the remote participant whose tile was clicked on.
-   */
-  const sendHello = useCallback(
-    (participantId) => {
-      callObject &&
-        callObject.sendAppMessage({ hello: 'world' }, participantId);
-    },
-    [callObject]
-  );
-
-  function getTiles() {
-    let largeTiles = [];
-    let smallTiles = [];
-    Object.entries(callState.callItems).forEach(([id, callItem]) => {
-      const isLarge =
-        isScreenShare(id) ||
-        (!isLocal(id) && !containsScreenShare(callState.callItems));
-      const tile = (
-        <Tile
-          key={id}
-          videoTrackState={callItem.videoTrackState}
-          audioTrackState={callItem.audioTrackState}
-          isLocalPerson={isLocal(id)}
-          isLarge={isLarge}
-          disableCornerMessage={isScreenShare(id)}
-          onClick={
-            isLocal(id)
-              ? null
-              : () => {
-                  sendHello(id);
-                }
-          }
-        />
-      );
-      if (isLarge) {
-        largeTiles.push(tile);
-      } else {
-        smallTiles.push(tile);
-      }
-    });
-    return [largeTiles, smallTiles];
-  }
-
-  const [largeTiles, smallTiles] = getTiles();
-  const message = getMessage(callState);
-  return (
-    <div className="call">
-      <div className="large-tiles">
-        {
-          !message
-            ? largeTiles
-            : null /* Avoid showing large tiles to make room for the message */
-        }
-      </div>
-      <div className="small-tiles">{smallTiles}</div>
-      {message && (
-        <CallMessage
-          header={message.header}
-          detail={message.detail}
-          isError={message.isError}
-        />
-      )}
-    </div>
-  );
+const CALL_OPTIONS = {
+  iframeStyle: {
+    width: "100%",
+    height: "100%",
+    border: "1px solid #e6eaef",
+    borderRadius: "6px 6px 0 0",
+  },
+  showLeaveButton: true,
+  showFullscreenButton: true,
+  //   showLocalVideo: false,
+  //   showParticipantsBar: false,
 }
+
+const DEFAULT_HEIGHT = 400
+
+const Call = ({ roomName }) => {
+  const videoRef = useRef(null)
+  const [height, setHeight] = useState(DEFAULT_HEIGHT)
+  const [callframe, setCallframe] = useState(null)
+
+  useEffect(() => {
+    if (!videoRef || !videoRef?.current || callframe) return
+    // CALL_OPTIONS.url = "https://nkjt-team.daily.co/room4?t=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyIjoicm9vbTQiLCJvIjp0cnVlLCJ1IjoiTktKVC1NYXRpbGRhIiwiZCI6IjZiNDdhNTI4LTc0ZjQtNDdmOC1iNWFmLTYyZGI0MmJkNGM5MyIsImlhdCI6MTYyMjQ1MDE1MX0.75feEFdVC1WZsyZnsztmH6ZnJ67pXpsT2UgJrb6Kzio"
+    CALL_OPTIONS.url = `https://nkjt-team.daily.co/${roomName}`
+
+    const newCallframe = DailyIframe.createFrame(
+      videoRef.current,
+      CALL_OPTIONS
+    )
+
+    newCallframe.join().then(() => {
+      // setHeight((videoRef?.current?.clientWidth || 500) * 0.75)
+      setCallframe(newCallframe)
+    })
+
+    newCallframe.on("access-state-updated", (event) => {
+      fetch(`http://localhost:8080/nkjt-rooms/`, {
+        method: "PATCH",
+        body: JSON.stringify({ event, room: roomName }),
+      })
+        .then((res) => res.json())
+        .then((json) => console.log(json))
+        .catch((err) => console.log("Error: " + err))
+      // console.log("Access state updated", event)
+
+    })
+
+    // newCallframe.on('participant-joined', (event) => {
+    //   handleEvent(event, 'room4')
+    //   console.log('joined-meeting', event)
+    // })
+
+    // newCallframe.on('participant-left', (event) => {
+    //   handleEvent(event, 'room4')
+    //   console.log('left-meeting', event)
+    // })
+  }, [videoRef])
+
+  return (
+    <div>
+      <Header>{roomName}</Header>
+      <VideoContainer height={height}>
+        <Callframe ref={videoRef} />
+      </VideoContainer>
+    </div>
+  )
+}
+
+const Header = styled.p`
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+`
+
+const VideoContainer = styled.div`
+  margin: auto;
+  max-width: 1000px;
+  /* height: ${(props) => (props.hidden ? "100" : props.height)}px; */
+  height: 600px;
+`
+
+const Callframe = styled.div`
+  width: 100%;
+  height: 100%;
+`
+
+export default Call

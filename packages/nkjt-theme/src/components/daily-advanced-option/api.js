@@ -13,21 +13,15 @@ const newRoomEndpoint = 'http://localhost:8080/rooms'
 const createRoom = async () => {
 
   const exp = Math.round(Date.now() / 1000) + 60 * 30
-  // const options = {
-  //   properties: {
-  //     exp: exp,
-  //   },
-  // };
+
   let response = await fetch(newRoomEndpoint, {
     method: "POST",
     body: JSON.stringify({exp}),
     mode: 'cors'
   })
-    let room = await response.json();
-  return room;
+  let room = await response.json()
+  return room
 
-  // Comment out the above and uncomment the below, using your own URL
-  return { url: "https://nkjt-team.daily.co/nkjt-test" };
 }
 
-export default { createRoom };
+export default { createRoom }
