@@ -7,6 +7,7 @@ import Post from "./post"
 import Page from "./page"
 
 import { Admin } from "../daily/Admin"
+import ErrorPage from "./error"
 import { User } from "../daily/User"
 
 const Main = ({ state }) => {
@@ -14,13 +15,14 @@ const Main = ({ state }) => {
 
   return (
     <>
-      <User />
-      {/* <Admin/> */}
       <MainContainer>
         <Switch>
           <List when={data.isArchive} />
           <Post when={data.isPost} />
           <Page when={data.isPage} />
+          <User when={data.isVideoPage} />
+          <Admin when={data.isAdminPage} />
+          <ErrorPage when={data.isError} />
         </Switch>
       </MainContainer>
     </>

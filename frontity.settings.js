@@ -25,7 +25,7 @@ const settings = {
       state: {
         source: {
           // What your homepage is set as in wordpress dashboard
-          homepage: "/hem",
+          homepage: "/",
           // Below you need to write your wordpress url
           // url: "http://127.0.0.1:10080/wordpress/",
           url: "http://localhost:8888/"

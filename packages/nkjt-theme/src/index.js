@@ -4,6 +4,8 @@ import iframe from "@frontity/html2react/processors/iframe";
 import link from "@frontity/html2react/processors/link";
 
 import menuHandler from "./components/handlers/menu-handler";
+import videoHandler from "./components/handlers/video-handler";
+import adminHandler from "./components/handlers/admin-handler";
 
 const nkjtTheme = {
   name: "nkjt-theme",
@@ -32,7 +34,11 @@ const nkjtTheme = {
       },
       beforeSSR: async ({ state, actions }) => {
         await actions.source.fetch(`/menu/${state.theme.menuUrl}`);
-      }
+      },
+      init: ({ libraries }) => {
+        libraries.html2react.processors.push(image);
+        libraries.source.handlers.push(videoHandler, adminHandler);
+      },
     },
   },
   libraries: {

@@ -2,8 +2,11 @@ import React from "react";
 import { Global, connect, css, styled, Head } from "frontity";
 
 import Header from "./header/header";
-import Main from "./main/main";
+import TopMain from "./main/top-main";
 import Footer from "./footer/footer";
+
+import LandingPage from "./main/landing-page"
+
 import gutenbergStyle from "./style.css";
 import gutenbergTheme from "./theme.css";
 
@@ -13,7 +16,7 @@ const Root = () => {
   return (
     <>
       <Head>
-        <title>NKJT Nationella kvinnorjour för kvinnor som talar teckenspråk</title>
+        <title>NKJT</title>
         <meta name="description" content=""></meta>
       </Head>
 
@@ -24,9 +27,10 @@ const Root = () => {
       <Global styles={css(gutenbergStyle)} />     
       <Global styles={css(gutenbergTheme)} />
 
-      <Header />
-      <Main />
-      <Footer />
+      {/* <LandingPage /> */}
+      {/* <Header /> */}
+      <TopMain />
+      {/* <Footer /> */}
     </>
   );
 };
