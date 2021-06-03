@@ -6,6 +6,7 @@ import link from "@frontity/html2react/processors/link";
 import menuHandler from "./components/handlers/menu-handler";
 import videoHandler from "./components/handlers/video-handler";
 import adminHandler from "./components/handlers/admin-handler";
+import homePageHandler from "./components/handlers/home-page-handler";
 
 const nkjtTheme = {
   name: "nkjt-theme",
@@ -37,7 +38,7 @@ const nkjtTheme = {
       },
       init: ({ libraries }) => {
         libraries.html2react.processors.push(image);
-        libraries.source.handlers.push(videoHandler, adminHandler);
+        libraries.source.handlers.push(videoHandler, adminHandler, homePageHandler);
       },
     },
   },

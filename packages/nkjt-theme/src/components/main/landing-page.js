@@ -14,9 +14,9 @@ const LandingPage = ({ state }) => {
     <MainContainer>
       <HeroImage src={Image} />
       <ButtonContainer>
-        <Button to="/">
+        {/* <Button link="/exempelsida">
           <ButtonImage src={ButtonImage1} />
-        </Button>
+        </Button> */}
 
         <Button link="/video">
           <ButtonImage src={ButtonImage2} />
