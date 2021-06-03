@@ -1,26 +1,28 @@
-import React, { useState } from "react";
+  
+import React from "react";
 import { connect, styled } from "frontity";
 import Link from "../link";
 
-const Nav = ({ state, mobileMenu, setIsMobileMenuOpen }) => {
-    const parentItems = state.source.get(`/menu/${state.theme.menuUrl}/`).items;
+const Nav = ({ state }) => {
+  const parentItems = state.source.get(`/menu/${state.theme.menuUrl}/`).items;
 
-    return (
-      <NavContainer>
-        {parentItems.map((item) => {
-          if (!item.child_items) {
-            return (
-              <NavItem key={item.ID} className="parent-navitem">
-                <Link link={item.url}>{item.title}</Link>
+  return (
+    <NavContainer>
+      {parentItems.map((item) => {
+        const childItems = item.child_items;
+          return (
+            <NavMenu key={item.ID}>
+              <NavItem className="parent-navitem">
+                <Link link={item.url}>
+                  {item.title}
+                </Link>
+                {item.child_items && (
+                  <>
+                    <NavArrow></NavArrow>                  
+                  </>
+                )}
               </NavItem>
-            );
-          } else {
-            const childItems = item.child_items;
-            return (
-              <NavMenuWithChild key={item.ID}>
-                <NavItem className="parent-navitem">
-                  <Link link={item.url}>{item.title}</Link>
-                </NavItem>
+              {item.child_items && (
                 <ChildMenu>
                   {childItems.map((childItem) => {
                     return (
@@ -30,12 +32,12 @@ const Nav = ({ state, mobileMenu, setIsMobileMenuOpen }) => {
                     );
                   })}
                 </ChildMenu>
-              </NavMenuWithChild>
-            );
-          }
-        })}
-      </NavContainer>
-    );
+              )}
+            </NavMenu>
+          );
+      })}
+    </NavContainer>
+  );
 };
 
 export default connect(Nav);
@@ -50,9 +52,19 @@ const NavContainer = styled.nav`
   }
 `;
 
+const NavMenu = styled.div`
+  position: relative;
+  display: inline-block;
+`;
+
 const NavItem = styled.div`
   padding: 5px 18px;
   margin: 0 16px;
+  &.parent-navitem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   &:hover {
     background-color: #e07c3e;
     border-radius: 20px;
@@ -70,10 +82,14 @@ const NavItem = styled.div`
   }
 `;
 
-// Second nav menu
-const NavMenuWithChild = styled.div`
-  position: relative;
-  display: inline-block;
+const NavArrow = styled.span`
+  width: 0;
+	height: 0;
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+	border-top: 10px solid #555;
+  margin-left: 7px;
+  transition: 0.4s;
 `;
 
 // Child Nav menu
@@ -85,7 +101,7 @@ const ChildMenu = styled.span`
   z-index: 1;
   text-align: left;
   background-color: #fff;
-  ${NavMenuWithChild}:hover & {
+  ${NavMenu}:hover & {
     display: flex;
     flex-direction: column;
     align-items: center;

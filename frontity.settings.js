@@ -4,7 +4,7 @@ const settings = {
     frontity: {
       url: "https://test.frontity.org",
       title: "NKJT",
-      description: "Nationella kvinnorjour för kvinnor som talar teckenspråk"
+      description: "Nationell kvinnorjour och stöd på teckenspråk"
     }
   },
   packages: [

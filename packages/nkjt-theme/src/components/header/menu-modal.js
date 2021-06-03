@@ -4,31 +4,31 @@ import { styled, connect } from "frontity";
 import Link from "../link";
 
 const MenuModal = ({ state }) => {
-    const { menu } = state.theme;
-    const isThereLinks = menu != null && menu.length > 0;
+  const { menu } = state.theme;
+  const isThereLinks = menu != null && menu.length > 0;
 
-    return (
-        <>
-            <MenuOverlay />
-            <MenuContent as="nav">
-                {isThereLinks &&
-                    menu.map(([name, link]) => (
-                        <MenuLink
-                            key={name}
-                            link={link}
-                            aria-current={state.router.link === link ? "page" : undefined}
-                        >
-                            {name}
-                        </MenuLink>
-                    ))               
-                }
-            </MenuContent>
-        </>
-    );
+  return (
+    <>
+      <MenuOverlay />
+      <MenuContent as="nav">
+        {isThereLinks &&
+          menu.map(([name, link]) => (
+            <MenuLink
+              key={name}
+              link={link}
+              aria-current={state.router.link === link ? "page" : undefined}
+            >
+              {name}
+            </MenuLink>
+          ))               
+        }
+      </MenuContent>
+    </>
+  );
 };
 
 const MenuOverlay = styled.div`
-  background-color: #67c2c0;
+  background-color: #583666;
   width: 100vw;
   height: 100vh;
   overflow: hidden auto;
@@ -57,7 +57,6 @@ const MenuLink = styled(Link)`
   &[aria-current="page"] {
     color: yellow;
     font-weight: bold;
-    /* border-bottom: 4px solid yellow; */
   }
 `;
 

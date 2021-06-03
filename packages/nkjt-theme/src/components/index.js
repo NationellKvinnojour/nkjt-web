@@ -25,7 +25,7 @@ const Root = () => {
 
       <Header />
       <Main />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
