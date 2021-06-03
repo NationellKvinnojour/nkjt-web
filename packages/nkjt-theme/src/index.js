@@ -38,11 +38,11 @@ const nkjtTheme = {
   libraries: {
     html2react: {
       processors: [link, image, iframe]
+    },
+    source: {
+      handlers: [menuHandler],
     }
   },
-  source: {
-    handlers: [menuHandler],
-  }
 };
 
 export default nkjtTheme;

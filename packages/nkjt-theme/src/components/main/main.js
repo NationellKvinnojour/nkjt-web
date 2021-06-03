@@ -12,14 +12,14 @@ import DoorClosed from "../../assets/door-closed.svg";
 const Main = ({ state }) => {
     const data = state.source.get(state.router.link);
 
-    const [ roomBusyOne, setRoomBusyOne ] = useState(false);
-    const [ roomBusyTwo, setRoomBusyTwo ] = useState(false);
-    const [ roomBusyThree, setRoomBusyThree ] = useState(false);
-    const [ roomBusyFour, setRoomBusyFour ] = useState(false);
+    // const [ roomBusyOne, setRoomBusyOne ] = useState(false);
+    // const [ roomBusyTwo, setRoomBusyTwo ] = useState(false);
+    // const [ roomBusyThree, setRoomBusyThree ] = useState(false);
+    // const [ roomBusyFour, setRoomBusyFour ] = useState(false);
      
     return (
         <MainContainer>
-            <ColumnContainer>
+            {/* <ColumnContainer>
                 <Column>
                     <h3>Hej och välkommen till NJKT</h3>
                     <p>Vi hjälper döva, hörselskadade och dövblinda kvinnor, icke-binära och unga tjejer från 15 år och uppåt, med att ta makten över sina liv från våld och förtryck.
@@ -99,7 +99,7 @@ const Main = ({ state }) => {
                         </RoomLinkContainer>     
                     </ButtonContainer>
                 </Column>
-            </ColumnContainer>
+            </ColumnContainer> */}
             <Switch>
                 <List when={data.isArchive} />
                 <Post when={data.isPost} />

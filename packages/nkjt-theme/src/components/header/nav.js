@@ -1,145 +1,109 @@
+  
 import React from "react";
 import { connect, styled } from "frontity";
 import Link from "../link";
 
 const Nav = ({ state }) => {
-    const items = state.source.get(`/menu/${state.theme.menuUrl}/`).items;
-    console.log(items);
+  const parentItems = state.source.get(`/menu/${state.theme.menuUrl}/`).items;
 
-    return (
-        <NavContainer>
-            <p>Nav item</p>
-            {/* Need to uncomment this code when the wordpress menu is inserted into the wordpress api see this tutorial https://www.youtube.com/watch?v=BMJn0RZ2I9s */}
-            {/* {items.map((item) => {
-                if(!item.child_items) {
+  return (
+    <NavContainer>
+      {parentItems.map((item) => {
+        const childItems = item.child_items;
+          return (
+            <NavMenu key={item.ID}>
+              <NavItem className="parent-navitem">
+                <Link link={item.url}>
+                  {item.title}
+                </Link>
+                {item.child_items && (
+                  <>
+                    <NavArrow></NavArrow>                  
+                  </>
+                )}
+              </NavItem>
+              {item.child_items && (
+                <ChildMenu>
+                  {childItems.map((childItem) => {
                     return (
-                        <NavItem key={item.ID}>
-                            <Link link={item.url}>{item.title}</Link>
-                        </NavItem>
+                      <NavItem key={childItem.ID} className="child-navitem">
+                        <Link link={childItem.url}>{childItem.title}</Link>
+                      </NavItem>
                     );
-                } else {
-                    const childItems = items.child_items;
-                    return (
-                        <NavItemWithChild ley={item.ID}>
-                            <NavItem key={item.ID}>
-                                <Link link={item.url}>{item.title}</Link>
-                            </NavItem>
-                            <ChildMenu>
-                                {childItems.map((childItem) => {
-                                    return (
-                                        <NavItem key={childItem.ID}>
-                                            <Link link={childItem.url}>{childItem.title}</Link>
-                                        </NavItem>
-                                    );
-                                })}
-                            </ChildMenu>
-                        </NavItemWithChild>
-                    );
-                }
-             })}             */}
-        </NavContainer>
-    );
+                  })}
+                </ChildMenu>
+              )}
+            </NavMenu>
+          );
+      })}
+    </NavContainer>
+  );
 };
 
 export default connect(Nav);
 
-const NavContainer = styled.nav`
-  list-style: none;
+// Main nav container
+const NavContainer = styled.nav`  
   display: flex;
-  max-width: 100%;
-  box-sizing: border-box;
-  padding: 0 24px;
-  margin: 0;
-  overflow: hidden;
-  border: 1px solid red;
+  align-items: center;
+  justify-content: space-evenly;
   @media screen and (max-width: 1000px) {
     display: none;
   }
 `;
 
+const NavMenu = styled.div`
+  position: relative;
+  display: inline-block;
+`;
+
 const NavItem = styled.div`
-  padding: 0;
+  padding: 5px 18px;
   margin: 0 16px;
-  color: #fff;
-  font-size: 0.9em;
-  box-sizing: border-box;
-  flex-shrink: 0;
-  & > a {
-    display: inline-block;
-    line-height: 2em;
-    border-bottom: 2px solid;
-    border-bottom-color: transparent;
-    /* Use for semantic approach to style the current link */
-    &[aria-current="page"] {
-      border-bottom-color: #fff;
-    }
+  &.parent-navitem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  &:first-of-type {
-    margin-left: 0;
+  &:hover {
+    background-color: #e07c3e;
+    border-radius: 20px;
   }
-  &:last-of-type {
-    margin-right: 0;
-    &:after {
-      content: "";
-      display: inline-block;
-      width: 24px;
+  &.child-navitem {
+    font-size: 15px;
+    display: flex;
+    background-color: #fff;
+    width: 100%;
+    padding: 10px 18px;
+    &:hover{
+      background-color: #f2f2f2;
+      border-radius: 0;
     }
   }
 `;
 
-const NavItemWithChild = styled.div`
-  background: pink;
+const NavArrow = styled.span`
+  width: 0;
+	height: 0;
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+	border-top: 10px solid #555;
+  margin-left: 7px;
+  transition: 0.4s;
 `;
-const ChildMenu = styled.div`
-  left: 0;
-  background-color: lightblue;
-  width: 100%;
+
+// Child Nav menu
+const ChildMenu = styled.span`
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  text-align: left;
+  background-color: #fff;
+  ${NavMenu}:hover & {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
-
-// Old code
-
-// const MenuNav = styled.nav`
-//     display: none;
-//     @media (min-width: 1000px) {
-//         display: block;
-//         flex-direction: row;
-//     }
-// `;
-
-// const MenuItem = styled.li`
-//     position: relative;
-//     list-style: none;
-//     margin-right: 20px;
-//     font-size: 18px;
-//     margin: ${({submenu}) => submenu ? "5px" : "10px !important"};
-//     align-self: ${({submenu}) => submenu && "flex-start"};
-    
-// `;
-
-// const MenuLink = styled(Link)`
-//     display: block;
-//     &:hover,
-//     &[aria-current="page"] {
-//         text-decoration: underline;
-//     }
-// `;
-
-// const StyledMenu = styled.ul`
-//     display: flex;
-//     flex-wrap: wrap;
-//     flex-direction: ${({submenu}) => submenu && "column"};
-//     visibility: ${({submenu}) => submenu && "hidden"};
-//     position: ${({submenu}) => submenu && "absolute"};
-//     margin: ${({submenu}) => submenu ? "10px" : 0};
-//     width: ${({submenu}) => submenu && "100px"};
-//     background-color: ${({submenu}) => submenu && "#fff"};
-//     ${MenuItem}:hover & {
-//         visibility: ${({submenu}) => submenu && "visible"};
-//     }
-//     @media (min-width: 1000px) {
-//         flex-direction: row;
-//         justify-content: space-between;
-//         width: ${({submenu}) => submenu && "150px"};
-//     }
-// `;

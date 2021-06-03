@@ -8,6 +8,6 @@
   ],
   "license": "Apache-2.0",
   "dependencies": {
-    "frontity": "^1.15.0"
+    "frontity": "^1.16.0"
   }
 }

@@ -3,19 +3,24 @@ import { connect, styled } from "frontity";
 import Link from "@frontity/components/link";
 
 import Nav from "./nav";
-import MobileMenu from "./menu"
+import MobileMenu from "./menu";
 
-const Header = () => {
+const Header = ({ state }) => {
+    
     return (
         <HeaderContainer>
-            <InnerDiv>
+            <MobileMenuContainer>
                 <Link link="/">
-                    {/* Need to figure out how to access the header logo via the wordpress api */}
-                    <HeaderLogo src="http://127.0.0.1:10080/wordpress/wp-content/uploads/2021/05/Logo-1.jpg" alt="NKJT loggan"/>
+                    <MobileHeaderText>{state.frontity.description}</MobileHeaderText>
                 </Link>
                 <MobileMenu />
+            </MobileMenuContainer>
+            <DesktopMenu>
+                <Link link="/">
+                    <HeaderLogo src="http://127.0.0.1:10080/wordpress/wp-content/uploads/2021/05/Logo-1.jpg" alt="NKJT loggan"/>
+                </Link>
                 <Nav />
-            </InnerDiv>
+            </DesktopMenu>
         </HeaderContainer>
     );
 };
@@ -23,30 +28,49 @@ const Header = () => {
 export default connect(Header);
 
 const HeaderContainer = styled.header`
-    background-color: #fff;
-`;
-
-const InnerDiv =  styled.div`
-    border-bottom: 0.5px solid #808080;
-    padding: 30px;
-    margin: 20px;
+    background-color: #583666;
+    color: #fff;
     display: flex;
-    justify-content: flex-start;
-    @media(min-width: 1000px) {
-        display: flex;
-        align-items: center;
-        flex-direction: row;
-        justify-content: space-between;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    @media(min-width: 1024px){
+        background-color: #fff;
+        color: #000;
+        padding: 30px 40px;
+        justify-content: center;
+    }    
+`;
+
+// Mobile menu
+const MobileMenuContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    @media(min-width: 1024px){
+        display: none;
     }
-    @media(min-width: 1143px){
-        margin: auto;
-        max-width: 1100px;        
+`;
+const MobileHeaderText = styled.h1`
+    font-size: 15px;
+    max-width: 90%;
+    @media(min-width: 600px){
+        max-width: 100%;
     }
 `;
 
+// Desktop menu
+const DesktopMenu = styled.div`
+  display: none;
+  @media(min-width: 1024px){
+    display: flex;
+    justify-content: space-between;
+  }
+`;
 const HeaderLogo = styled.img`
-    max-width: 150px;
-    @media(min-width: 1000px) {
+    @media(min-width: 1024px) {
         max-width: 200px;
+        margin-right: 20px;
     }
 `;

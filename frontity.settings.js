@@ -4,7 +4,7 @@ const settings = {
     frontity: {
       url: "https://test.frontity.org",
       title: "NKJT",
-      description: "Nationella kvinnorjour för kvinnor som talar teckenspråk"
+      description: "Nationell kvinnorjour och stöd på teckenspråk"
     }
   },
   packages: [
@@ -27,8 +27,8 @@ const settings = {
           // What your homepage is set as in wordpress dashboard
           homepage: "/hem",
           // Below you need to write your wordpress url
-          url: "http://127.0.0.1:10080/wordpress/",
-          // "api": "http://127.0.0.1:10080/wordpress/wp-json"
+          // api: "http://hippiekick.byethost3.com/wp-json",
+          api: "http://127.0.0.1:10080/wordpress/wp-json"
         }
       }
     },
