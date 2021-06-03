@@ -1,8 +1,7 @@
 import React, { useRef, useEffect, useState } from "react"
 import { styled } from "frontity"
 
-export const Admin = () => {
-  // const [rooms, setRooms] = useState([])
+export const Dashboard = () => {
   const [messages, setMessages] = useState([])
 
   const getMessages = () => {
@@ -11,14 +10,12 @@ export const Admin = () => {
     })
       .then((res) => res.json())
       .then((json) => {
-        // setRooms(json)
         setMessages(json)
       })
       .catch((err) => console.log("Error: " + err))
   }
 
   useEffect(() => {
-    // getRooms()
     getMessages()
   }, [messages])
 

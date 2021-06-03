@@ -8,7 +8,7 @@ const Page = ({ state, libraries }) => {
 
   return (
     <div>
-      {/* <h2>{page.title.rendered}</h2> */}
+      <h2>{page.title.rendered}</h2>
       <Content>
         <Html2React html={page.content.rendered} />
       </Content>

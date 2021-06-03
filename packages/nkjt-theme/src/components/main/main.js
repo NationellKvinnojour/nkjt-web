@@ -6,7 +6,7 @@ import List from "./list"
 import Post from "./post"
 import Page from "./page"
 
-import { Admin } from "../daily/Admin"
+import { Dashboard } from "../daily/Dashboard"
 import ErrorPage from "./error"
 import Home from "./home"
 import { User } from "../daily/User"
@@ -22,7 +22,7 @@ const Main = ({ state }) => {
           <Page when={data.isPage} />
           <Home when={data.isHomePage} />
           <User when={data.isVideoPage} />
-          <Admin when={data.isAdminPage} />
+          <Dashboard when={data.isAdminPage} />
           <ErrorPage when={data.isError} />
         </Switch>
     </>

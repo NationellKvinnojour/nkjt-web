@@ -6,17 +6,15 @@ import Image from "../../assets/nkjt-1.png"
 import ButtonImage1 from "../../assets/nkjt-2.png"
 import ButtonImage2 from "../../assets/nkjt-3.png"
 
-// import Main from "./main"
-
 const LandingPage = ({ state }) => {
   const data = state.source.get(state.router.link)
   return (
     <MainContainer>
       <HeroImage src={Image} />
       <ButtonContainer>
-        {/* <Button link="/exempelsida">
+        <Button link="/hem">
           <ButtonImage src={ButtonImage1} />
-        </Button> */}
+        </Button>
 
         <Button link="/video">
           <ButtonImage src={ButtonImage2} />
