@@ -28,8 +28,10 @@ export default connect(LandingPage)
 
 const MainContainer = styled.main`
   background: #583666;
-  text-align: center;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
 
 const ButtonContainer = styled.div`
@@ -38,14 +40,14 @@ const ButtonContainer = styled.div`
   align-items: center;
   justify-content: center;
 
-  @media (min-width: 900px) {
+  @media (min-width: 800px) {
     flex-direction: row;
   }
 `
 
 const HeroImage = styled.img`
   width: 80%;
-  margin: 20px;
+  padding: 20px;
   text-align: center;
 
   @media (min-width: 900px) {
@@ -67,10 +69,10 @@ const Button = styled(Link)`
   }
 
   @media (min-width: 600px) {
-    width: 60%;
-    height: 500px;
+    /* width: 60%; */
+    max-height: 500px;
   }
-  @media (min-width: 900px) {
+  @media (min-width: 800px) {
     width: 40%;
     height: 400px;
   }

@@ -23,6 +23,7 @@ const nkjtTheme = {
         showOnList: false,
         showOnPost: false,
       },
+      colors: []
     },
   },
   actions: {
