@@ -8,7 +8,7 @@ const Page = ({ state, libraries }) => {
 
   return (
     <div>
-      {/* <h2>{page.title.rendered}</h2> */}
+      <Title>{page.title.rendered}</Title>
       <Content>
         <Html2React html={page.content.rendered} />
       </Content>
@@ -18,8 +18,27 @@ const Page = ({ state, libraries }) => {
 
 export default connect(Page);
 
+const Title = styled.h1`
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  padding: 40px 0;
+  margin: 0;
+  background: #68C2C0;
+`
+
 const Content = styled.div`
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center; */
+  padding: 0 30px 30px 30px;
+
+  @media (min-width: 600px) {
+    max-width: 500px;
+    margin: auto;
+  }
+
+  @media (min-width: 800px) {
+    max-width: 700px;
+  }
+
+  @media (min-width: 900px) {
+    max-width: 900px;
+  }
 `;

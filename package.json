@@ -17,14 +17,16 @@
   },
   "prettier": {},
   "dependencies": {
-    "@frontity/core": "^1.14.1",
-    "@frontity/html2react": "^1.7.0",
+    "@daily-co/daily-js": "^0.13.0",
+    "@frontity/core": "^1.13.0",
+    "@frontity/html2react": "^1.6.2",
     "@frontity/mars-theme": "./packages/mars-theme",
     "@frontity/tiny-router": "^1.4.2",
-    "@frontity/wp-source": "^1.11.5",
-    "dayjs": "^1.10.5",
-    "dotenv": "^8.6.0",
-    "frontity": "^1.16.0",
-    "nkjt-theme": "file:packages/nkjt-theme"
+    "@frontity/wp-source": "^1.11.4",
+    "@orballo/very-tiny-router": "^0.1.2",
+    "dayjs": "^1.10.4",
+    "frontity": "^1.15.0",
+    "nkjt-theme": "file:packages/nkjt-theme",
+    "react-router-dom": "^5.2.0"
   }
 }

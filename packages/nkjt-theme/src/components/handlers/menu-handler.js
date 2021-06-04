@@ -2,6 +2,7 @@ const menuHandler = {
     name: "menus",
     priority: 10,
     pattern: "/menu/:slug",
+    head_tags: false,
     func: async ({ link, params, state, libraries }) => {
       // console.log("PARAMS:", params);
       const { slug } = params;
@@ -10,7 +11,7 @@ const menuHandler = {
       const response = await libraries.source.api.get({
         endpoint: `/menus/v1/menus/${slug}`,
       });
-  
+      
       // Parse the JSON to get the object
       const menuData = await response.json();
   
@@ -20,6 +21,7 @@ const menuHandler = {
       Object.assign(menu, {
         items: menuData.items,
         isMenu: true,
+        head_tags: false
       });
     },
   };
