@@ -10,7 +10,6 @@ import LandingPage from "./main/landing-page"
 import gutenbergStyle from "./style.css";
 import gutenbergTheme from "./theme.css";
 
-
 const Root = () => {
 
   return (
@@ -26,6 +25,7 @@ const Root = () => {
       */}
       <Global styles={css(gutenbergStyle)} />     
       <Global styles={css(gutenbergTheme)} />
+
 
       {/* <LandingPage /> */}
       {/* <Header /> */}

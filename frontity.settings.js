@@ -4,7 +4,7 @@ const settings = {
     frontity: {
       url: "https://test.frontity.org",
       title: "NKJT",
-      description: "Nationella kvinnorjour för kvinnor som talar teckenspråk"
+      description: "Nationell kvinnorjour och stöd på teckenspråk"
     }
   },
   packages: [
@@ -31,7 +31,6 @@ const settings = {
           url: "http://localhost:8888/"
           // url: "http://hippiekick.byethost3.com/",
           // api: "http://hippiekick.byethost3.com/wp-json"
-          // "api": "http://127.0.0.1:10080/wordpress/wp-json"
         }
       }
     },
