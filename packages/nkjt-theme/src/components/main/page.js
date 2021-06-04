@@ -1,10 +1,10 @@
-import React from "react";
-import { connect, styled } from "frontity";
+import React from "react"
+import { connect, styled } from "frontity"
 
 const Page = ({ state, libraries }) => {
-  const data = state.source.get(state.router.link);
-  const page = state.source[data.type][data.id];
-  const Html2React = libraries.html2react.Component;
+  const data = state.source.get(state.router.link)
+  const page = state.source[data.type][data.id]
+  const Html2React = libraries.html2react.Component
 
   return (
     <div>
@@ -13,10 +13,10 @@ const Page = ({ state, libraries }) => {
         <Html2React html={page.content.rendered} />
       </Content>
     </div>
-  );
-};
+  )
+}
 
-export default connect(Page);
+export default connect(Page)
 
 const Title = styled.h1`
   font-family: "Roboto", sans-serif;
@@ -41,4 +41,4 @@ const Content = styled.div`
   @media (min-width: 900px) {
     max-width: 900px;
   }
-`;
+`

@@ -1,14 +1,14 @@
-import React from "react";
-import { Global, connect, css, styled, Head } from "frontity";
+import React from "react"
+import { Global, connect, css, styled, Head } from "frontity"
 
-import Header from "./header/header";
-import TopMain from "./main/top-main";
-import Footer from "./footer/footer";
+import Header from "./header/header"
+import TopMain from "./main/top-main"
+import Footer from "./footer/footer"
 
 import LandingPage from "./main/landing-page"
 
-import gutenbergStyle from "./style.css";
-import gutenbergTheme from "./theme.css";
+import gutenbergStyle from "./style.css"
+import gutenbergTheme from "./theme.css"
 
 const Root = () => {
 
@@ -32,10 +32,10 @@ const Root = () => {
       <TopMain />
       {/* <Footer /> */}
     </>
-  );
-};
+  )
+}
 
-export default connect(Root);
+export default connect(Root)
 
 const globalStyles = css`
   * {
@@ -57,4 +57,4 @@ const globalStyles = css`
   p {
     color: #000;
   }
-`;
+`

@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { connect, styled } from "frontity"
-import Link from "@frontity/components/link";
+import Link from "@frontity/components/link"
 
 import Woman from "../../assets/kvinnosymbol.jpeg"
 import Hands from "../../assets/nkjt-hands.png"

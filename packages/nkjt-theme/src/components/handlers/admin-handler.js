@@ -1,7 +1,7 @@
 const adminHandler = {
   pattern: "/admin/",
   func: ({ state }) => {
-    state.source.data["/admin/"].isAdminPage = true;
+    state.source.data["/admin/"].isAdminPage = true
   }
 }
 

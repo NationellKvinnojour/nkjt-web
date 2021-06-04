@@ -1,26 +1,26 @@
-import React, { useState } from "react";
-import { connect, styled } from "frontity";
-import Link from "../link";
+import React, { useState } from "react"
+import { connect, styled } from "frontity"
+import Link from "../link"
 
 const Nav = ({ state }) => {
 
-  const parentItems = state.source.get(`/menu/${state.theme.menuUrl}/`).items;
+  const parentItems = state.source.get(`/menu/${state.theme.menuUrl}/`).items
   // {`${console.log(parentItems)}`}
   // {`${console.log(parentItems[0])}`}
 
-  const [ showChildMenu, setShowChildMenu ] = useState(false); 
+  const [ showChildMenu, setShowChildMenu ] = useState(false) 
 
   const toggleChildMenu = () => {
-    setShowChildMenu(!showChildMenu);
-    console.log(showChildMenu);
-  };
+    setShowChildMenu(!showChildMenu)
+    console.log(showChildMenu)
+  }
 
   return (
     <>
         <NavContainer>
             <InnerNavDiv>
             {parentItems.map((item) => {
-                const childItems = item.child_items;
+                const childItems = item.child_items
                 return (
                 // ul
                 <NavMenu key={item.ID}>
@@ -53,12 +53,12 @@ const Nav = ({ state }) => {
                             <ChildNavItem key={childItem.ID} className="child-navitem">
                             <Link link={childItem.url}>{childItem.title}</Link>
                             </ChildNavItem>
-                        );
+                        )
                         })}
                     </ChildMenu>
                     )}
                 </NavMenu>
-                );
+                )
             })}
             </InnerNavDiv>
         </NavContainer>
@@ -85,10 +85,10 @@ const Nav = ({ state }) => {
       </div>
     </nav> */}
     </>
-  );
-};
+  )
+}
 
-export default connect(Nav);
+export default connect(Nav)
 
 // Main nav container
 const NavContainer = styled.nav`  
@@ -103,16 +103,16 @@ const NavContainer = styled.nav`
     padding-bottom: 40px;
     margin-top: 50px;
   }
-`;
+`
 
 const InnerNavDiv = styled.div`
   border: 1px solid green;
-`;
+`
 
 const NavMenu = styled.ul`
   position: relative;
   display: inline-block;
-`;
+`
 
 const ParentNavItem = styled.li`
   padding: 5px 18px;
@@ -128,7 +128,8 @@ const ParentNavItem = styled.li`
     background-color: #e07c3e;
     border-radius: 20px;
   }
-`;
+`
+
 
 const ShowChildMenuButton = styled.button`
   border: none;
@@ -137,7 +138,8 @@ const ShowChildMenuButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-`;
+`
+
 
 const NavArrow = styled.span`
   width: 0;
@@ -147,7 +149,8 @@ const NavArrow = styled.span`
 	border-top: 10px solid #555;
   margin-left: 7px;
   transition: 0.4s;
-`;
+`
+
 
 const ChildMenu = styled.ul`
   display: none;
@@ -162,7 +165,8 @@ const ChildMenu = styled.ul`
     flex-direction: column;
     align-items: center;
   } */
-`;
+`
+
 
 const ChildNavItem = styled.li`
   font-size: 15px;
@@ -176,4 +180,4 @@ const ChildNavItem = styled.li`
     background-color: #f2f2f2;
     border-radius: 0;
   }
-`;
+`

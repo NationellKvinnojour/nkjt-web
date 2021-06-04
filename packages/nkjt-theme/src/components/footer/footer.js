@@ -1,5 +1,5 @@
-import React from "react";
-import { connect, styled } from "frontity";
+import React from "react"
+import { connect, styled } from "frontity"
 
 const Footer = () => {  
   return (
@@ -10,14 +10,14 @@ const Footer = () => {
             <span>Social icons or someting else</span>
           </InnerDiv>
         </FooterContainer>
-  );
-};
+  )
+}
 
-export default connect(Footer);
+export default connect(Footer)
 
 const FooterContainer = styled.footer`
   background-color: #fff;
-`;
+`
 
 const InnerDiv =  styled.div`
   border-top: 0.5px solid #808080;
@@ -27,4 +27,4 @@ const InnerDiv =  styled.div`
     margin: auto;
     max-width: 1100px;
   }
-`;
+`

@@ -1,9 +1,11 @@
-import React from "react";
-import { connect, styled } from "frontity";
-import Link from "@frontity/components/link";
+import React from "react"
+import { connect, styled } from "frontity"
+import Link from "@frontity/components/link"
 
-import Nav from "./nav";
-import MobileMenu from "./menu";
+import Nav from "./nav"
+import MobileMenu from "./menu"
+
+import Logo from "../../assets/logo.png"
 
 const Header = ({ state }) => {
     
@@ -17,15 +19,15 @@ const Header = ({ state }) => {
             </MobileMenuContainer>
             <DesktopMenu>
                 <Link link="/">
-                    <HeaderLogo src="http://127.0.0.1:10080/wordpress/wp-content/uploads/2021/05/Logo-1.jpg" alt="NKJT loggan"/>
+                    <HeaderLogo src={Logo} alt="NKJT loggan"/>
                 </Link>
                 <Nav />
             </DesktopMenu>
         </HeaderContainer>
-    );
-};
+    )
+}
 
-export default connect(Header);
+export default connect(Header)
 
 const HeaderContainer = styled.header`
     background-color: #583666;
@@ -40,7 +42,7 @@ const HeaderContainer = styled.header`
         padding: 30px 40px;
         justify-content: center;
     }    
-`;
+`
 
 // Mobile menu
 const MobileMenuContainer = styled.div`
@@ -51,14 +53,15 @@ const MobileMenuContainer = styled.div`
     @media(min-width: 1024px){
         display: none;
     }
-`;
+`
+
 const MobileHeaderText = styled.h1`
     font-size: 15px;
     max-width: 90%;
     @media(min-width: 600px){
         max-width: 100%;
     }
-`;
+`
 
 // Desktop menu
 const DesktopMenu = styled.div`
@@ -67,10 +70,11 @@ const DesktopMenu = styled.div`
     display: flex;
     justify-content: space-between;
   }
-`;
+`
+
 const HeaderLogo = styled.img`
     @media(min-width: 1024px) {
         max-width: 200px;
         margin-right: 20px;
     }
-`;
+`

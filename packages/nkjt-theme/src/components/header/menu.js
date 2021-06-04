@@ -1,11 +1,11 @@
-import React from "react";
-import { styled, connect, Global } from "frontity";
+import React from "react"
+import { styled, connect, Global } from "frontity"
 
-import { CloseIcon, HamburgerIcon } from "./menu-icon";
-import MenuModal from "./menu-modal";
+import { CloseIcon, HamburgerIcon } from "./menu-icon"
+import MenuModal from "./menu-modal"
 
 function MobileMenu({ state, actions }) {
-  const { isMobileMenuOpen } = state.theme;
+  const { isMobileMenuOpen } = state.theme
   
   return (
     <>
@@ -24,8 +24,8 @@ function MobileMenu({ state, actions }) {
       {/* If the menu is open, render the menu modal */}
       {isMobileMenuOpen && <MenuModal />}
     </>
-  );
-};
+  )
+}
 
 const MenuToggle = styled.button`
   position: absolute;
@@ -43,6 +43,6 @@ const MenuToggle = styled.button`
     align-items: center;
     justify-content: center;
   }
-`;
+`
 
-export default connect(MobileMenu);
+export default connect(MobileMenu)
