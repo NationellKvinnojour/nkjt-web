@@ -48,8 +48,8 @@ const Call = ({ roomName }) => {
     })
 
     newCallframe.on("access-state-updated", (event) => {
-      fetch(`http://localhost:8080/nkjt-rooms/`, {
-        method: "PATCH",
+      fetch(`http://localhost:8080/messages/`, {
+        method: "POST",
         body: JSON.stringify({ event, room: roomName }),
       })
         .then((res) => res.json())

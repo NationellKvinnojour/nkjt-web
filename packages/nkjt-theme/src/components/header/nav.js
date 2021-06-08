@@ -5,7 +5,7 @@ import Link from "../link"
 const Nav = ({ state }) => {
   const parentItems = state.source.get(`/menu/${state.theme.menuUrl}/`).items
 
-  console.log(parentItems)
+  // console.log(parentItems)
 
   return (
     <NavContainer>

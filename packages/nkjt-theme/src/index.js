@@ -39,7 +39,7 @@ const nkjtTheme = {
       },
       init: ({ libraries }) => {
         libraries.html2react.processors.push(image)
-        libraries.source.handlers.push(videoHandler, adminHandler, homePageHandler)
+        libraries.source.handlers.push(videoHandler, adminHandler, homePageHandler, menuHandler)
       },
     },
   },

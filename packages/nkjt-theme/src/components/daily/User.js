@@ -51,6 +51,7 @@ export const User = () => {
   //TODO mappa all rum här och visa bara de som inte är ongoing (alt visa alla men med olika styling?)
   return (
     <RoomContainer>
+      <Heading>JOURSAMTAL VIA WEBB</Heading>
       <Availability
         totalRooms={totalRooms}
         occupiedRooms={occupiedRooms}/>
@@ -62,6 +63,12 @@ export const User = () => {
     </RoomContainer>
   )
 }
+
+const Heading = styled.h1`
+  background: #67C2C0;
+  text-align: center;
+  padding: 40px;
+`
 
 const RoomContainer = styled.div`
   display: flex;

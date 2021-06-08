@@ -16,7 +16,7 @@ const LandingPage = ({ state }) => {
           <ButtonImage src={ButtonImage1} />
         </Button>
 
-        <Button link="/video">
+        <Button link="/joursamtal-via-webb">
           <ButtonImage src={ButtonImage2} />
         </Button>
       </ButtonContainer>

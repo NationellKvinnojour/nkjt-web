@@ -1,7 +1,7 @@
 const videoHandler = {
-  pattern: "/video/",
+  pattern: "/joursamtal-via-webb/",
   func: ({ state }) => {
-    state.source.data["/video/"].isVideoPage = true
+    state.source.data["/joursamtal-via-webb/"].isVideoPage = true
   }
 }
 

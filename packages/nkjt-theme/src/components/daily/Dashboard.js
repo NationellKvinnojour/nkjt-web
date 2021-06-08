@@ -17,7 +17,7 @@ export const Dashboard = () => {
 
   useEffect(() => {
     getMessages()
-  }, [messages])
+  }, [])
 
   return (
     <>
