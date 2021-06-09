@@ -35,6 +35,18 @@ body {
   }
 } */
 
+.has-background {
+  font-family: "Roboto", sans-serif;
+  /* text-align: center; */
+  /* margin: 0 -30px; */
+}
+
+@media (min-width: 600px) {
+  h1 {
+
+  }
+}
+
 h2 {
   font-family: "Roboto", sans-serif;
   font-size: 18px;
@@ -124,7 +136,9 @@ h2 {
 }
 
 .wp-block-group.has-background {
-  padding: 20px 30px;
+  /* padding: 20px 30px; */
+  padding-top: 20px;
+  padding-bottom: 20px;
   margin-top: 0;
   margin-bottom: 0;
 }
@@ -234,6 +248,7 @@ h2 {
 
 .has-yellow-background-color {
   background: #F2C35C;
+  margin: 0;
 }
 
 .has-light-purple-background-color {

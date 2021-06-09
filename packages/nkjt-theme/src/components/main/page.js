@@ -1,44 +1,82 @@
 import React from "react"
 import { connect, styled } from "frontity"
 
+import theme from "../themeColors"
+
+const determineColor = (title) => {
+  let color = theme.teal
+  switch(title) {
+    case "OM OSS":
+      color = theme.teal
+      break
+    case "VÅLD":
+      color = theme.orange
+      break
+    case "STÖD OSS":
+      color = theme.yellow
+      break
+    case "KONTAKT":
+      color = theme.yellow
+      break
+    default:
+      color = theme.teal
+  }
+  return color
+}
+
 const Page = ({ state, libraries }) => {
   const data = state.source.get(state.router.link)
   const page = state.source[data.type][data.id]
   const Html2React = libraries.html2react.Component
 
   return (
-    <div>
-      <Title>{page.title.rendered}</Title>
+    <Wrapper>
+      <Title backgroundColor={determineColor(page.title.rendered)}>{page.title.rendered}</Title>
       <Content>
         <Html2React html={page.content.rendered} />
       </Content>
-    </div>
+    </Wrapper>
   )
 }
 
 export default connect(Page)
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+
+`
 
 const Title = styled.h1`
   font-family: "Roboto", sans-serif;
   text-align: center;
   padding: 40px 0;
   margin: 0;
-  background: #68C2C0;
+  background: ${props => props.backgroundColor};
 `
 
 const Content = styled.div`
-  padding: 0 30px 30px 30px;
-
-  @media (min-width: 600px) {
-    max-width: 500px;
-    margin: auto;
+  > * {
+    padding: 0 30px;
   }
 
-  @media (min-width: 800px) {
-    max-width: 700px;
+  > ul {
+    padding: 0 60px;
   }
 
-  @media (min-width: 900px) {
-    max-width: 900px;
+  @media (min-width: 1025px) {
+    > * {
+      padding: 0 10vw;;
+    }
+
+    > ul {
+      padding: 0 12vw;
+    }
+  }
+
+  @media (min-width: 1425px) {
+    > ul {
+      padding: 0 11.5vw;
+    }
   }
 `

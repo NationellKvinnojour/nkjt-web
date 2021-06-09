@@ -7,10 +7,14 @@ import Header from "../header/header"
 import Main from "./main"
 import Footer from "../footer/footer"
 
+import LeaveButton from "./leave-button"
+
 const TopMain = ({ state }) => {
   const data = state.source.get(state.router.link)
   console.log(data)
   return (
+    <>
+    <LeaveButton/>
     <Switch>
       <LandingPage when={data.isHome} />
       {!data.isHome && 
@@ -21,6 +25,7 @@ const TopMain = ({ state }) => {
         </>
       }
     </Switch>
+    </>
   )
 }
 

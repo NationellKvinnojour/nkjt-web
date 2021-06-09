@@ -48,6 +48,9 @@ const NavContainer = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  /* margin-bottom: 50px; */
+  margin-left: 100px;
+
   @media screen and (max-width: 1000px) {
     display: none;
   }
