@@ -2,8 +2,8 @@ import React from "react"
 import { connect, styled } from "frontity"
 import Link from "@frontity/components/link"
 
-import Nav from "./nav"
-import MobileMenu from "./menu"
+import DesktopNav from "./desktop-nav"
+import MobileNav from "./mobile-nav"
 
 import Logo from "../../assets/logo.png"
 
@@ -18,13 +18,13 @@ const Header = ({ state }) => {
                     <MobileHeaderText>{state.frontity.description}</MobileHeaderText>
                 </Link>
               )}
-                <MobileMenu />
+                <MobileNav />
             </MobileMenuContainer>
             <DesktopMenu>
                 <Link link="/">
                     <HeaderLogo src={Logo} alt="NKJT loggan"/>
                 </Link>
-                <Nav />
+                <DesktopNav />
             </DesktopMenu>
         </HeaderContainer>
     )

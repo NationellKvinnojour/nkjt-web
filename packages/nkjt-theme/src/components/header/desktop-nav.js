@@ -2,10 +2,8 @@
 import { connect, styled } from "frontity"
 import Link from "../link"
 
-const Nav = ({ state }) => {
+const DesktopNav = ({ state }) => {
   const parentItems = state.source.get(`/menu/${state.theme.menuUrl}/`).items
-
-  // console.log(parentItems)
 
   return (
     <NavContainer>
@@ -13,23 +11,23 @@ const Nav = ({ state }) => {
         const childItems = item.child_items
           return (
             <NavMenu key={item.ID}>
-              <NavItem className="parent-navitem">
+              <ParentNavItem>
                 <Link link={item.url}>
                   {item.title}
                 </Link>
                 {item.child_items && (
                   <>
-                    <NavArrow></NavArrow>                  
+                    <NavArrow />                  
                   </>
                 )}
-              </NavItem>
+              </ParentNavItem>
               {item.child_items && (
                 <ChildMenu>
                   {childItems.map((childItem) => {
                     return (
-                      <NavItem key={childItem.ID} className="child-navitem">
+                      <ChildNavItem key={childItem.ID} className="child-navitem">
                         <Link link={childItem.url}>{childItem.title}</Link>
-                      </NavItem>
+                      </ChildNavItem>
                     )
                   })}
                 </ChildMenu>
@@ -41,7 +39,7 @@ const Nav = ({ state }) => {
   )
 }
 
-export default connect(Nav)
+export default connect(DesktopNav)
 
 // Main nav container
 const NavContainer = styled.nav`  
@@ -64,25 +62,30 @@ const NavMenu = styled.div`
 const NavItem = styled.div`
   padding: 5px 18px;
   margin: 0 16px;
-  &.parent-navitem {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
   &:hover {
     background-color: #e07c3e;
     border-radius: 20px;
   }
-  &.child-navitem {
-    font-size: 15px;
-    display: flex;
-    background-color: #fff;
-    width: 100%;
-    padding: 10px 18px;
-    &:hover{
-      background-color: #f2f2f2;
-      border-radius: 0;
-    }
+  a:hover {
+    color: black;
+  }
+`
+
+const ParentNavItem = styled(NavItem)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+const ChildNavItem = styled(NavItem)`
+  font-size: 15px;
+  display: flex;
+  background-color: #fff;
+  width: 100%;
+  padding: 10px 18px;
+  &:hover{
+    background-color: #f2f2f2;
+    border-radius: 0;
   }
 `
 

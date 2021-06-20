@@ -11,9 +11,12 @@ import LeaveButton from "./leave-button"
 
 const TopMain = ({ state }) => {
   const data = state.source.get(state.router.link)
+
   return (
     <>
-    <LeaveButton/>
+    {!state.theme.isMobileMenuOpen &&
+      <LeaveButton/>
+    }
     <Switch>
       <LandingPage when={data.isHome} />
       {!data.isHome && 

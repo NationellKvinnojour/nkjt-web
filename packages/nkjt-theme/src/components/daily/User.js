@@ -68,6 +68,7 @@ const Heading = styled.h1`
   background: #67C2C0;
   text-align: center;
   padding: 40px;
+  margin: 0;
 `
 
 const RoomContainer = styled.div`

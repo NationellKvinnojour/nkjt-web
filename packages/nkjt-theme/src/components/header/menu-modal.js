@@ -4,11 +4,7 @@ import { styled, connect } from "frontity"
 import Link from "../link"
 
 const MenuModal = ({ state }) => {
-  // const { menu } = state.theme
-  // const isThereLinks = menu != null && menu.length > 0
-
   const parentItems = state.source.get(`/menu/${state.theme.menuUrl}/`).items
-
 
   return (
     <>

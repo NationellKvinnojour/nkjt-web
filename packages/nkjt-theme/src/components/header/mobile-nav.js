@@ -1,10 +1,10 @@
 import React from "react"
 import { styled, connect, Global } from "frontity"
 
-import { CloseIcon, HamburgerIcon } from "./menu-icon"
+import { CloseIcon, HamburgerIcon } from "./hamburger-icon"
 import MenuModal from "./menu-modal"
 
-const MobileMenu = ({ state, actions }) => {
+const MobileNav = ({ state, actions }) => {
   const { isMobileMenuOpen } = state.theme
   const parentItems = state.source.get(`/menu/${state.theme.menuUrl}/`).items
 
@@ -30,8 +30,8 @@ const MobileMenu = ({ state, actions }) => {
 
 const MenuToggle = styled.button`
   position: absolute;
-  right: 25px;
   top: 15px;
+  right: 25px;
   background: transparent;
   border: 0;
   color: white;
@@ -39,6 +39,7 @@ const MenuToggle = styled.button`
   height: 40px;
   width: 40px;
   display: none;
+  cursor: pointer;
   @media (max-width: 1024px) {
     display: flex;
     align-items: center;
@@ -46,4 +47,4 @@ const MenuToggle = styled.button`
   }
 `
 
-export default connect(MobileMenu)
+export default connect(MobileNav)
