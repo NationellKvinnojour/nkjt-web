@@ -24,22 +24,21 @@ const LeaveButton = () => {
 }
 
 const Button = styled.button`
+  position: fixed;
+  top: 100px;
+  right: 10px;
   z-index: 1000;
+
   display: flex;
   flex-direction: column;
   align-items: center;
 
   width: 120px;
-
-
   font-weight: bold;
   padding: 10px;
   background: ${theme.yellow};
   border: 10px solid ${theme.orange};
   border-radius: 10px;
-  position: fixed;
-  right: 10px;
-  bottom: 10px;
   cursor: pointer;
 
   @media(min-width: 600px) {

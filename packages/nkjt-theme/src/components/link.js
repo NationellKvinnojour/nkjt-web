@@ -3,9 +3,10 @@ import { connect, useConnect } from "frontity"
 import Link from "@frontity/components/link"
 
 const NkjtLink = ({ children, ...props }) => {
-    const { state, actions } = useConnect
+    const { state, actions } = useConnect()
 
     const onClick = () => {
+      console.log(state.theme)
         if(state.theme.isMobileMenuOpen) {
             actions.theme.closeMobileMenu()
         }

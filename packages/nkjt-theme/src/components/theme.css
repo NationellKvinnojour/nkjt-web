@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-
 :root {
   --wp-admin-theme-color: #007cba;
   --wp-admin-theme-color-darker-10: #006ba1;
@@ -17,6 +16,26 @@
 
 body {
   /* padding: 30px; */
+}
+
+h1 {
+  font-family: "Roboto", sans-serif;
+}
+
+a {
+  font-weight: bold;
+}
+
+.parent-navitem a, .child-navitem a {
+  font-weight: normal;
+}
+
+a:hover {
+  color: #68C2C0;
+}
+
+.parent-navitem a:hover, .child-navitem a {
+  color: black;
 }
 
 /* h1 {
@@ -35,7 +54,7 @@ body {
   }
 } */
 
-.has-background {
+h2.has-background {
   font-family: "Roboto", sans-serif;
   /* text-align: center; */
   /* margin: 0 -30px; */
@@ -258,3 +277,32 @@ h2 {
 .has-dark-purple-background-color {
   background: #583666;
 }
+
+.two-thirds {
+  padding-bottom: 40px;
+
+  /* background-color: green; */
+}
+
+p.has-background {
+  margin: 0;
+}
+
+@media(min-width: 600px) and (max-width:781px) {
+  .one-third, .two-thirds {
+    padding-bottom: 40px;
+  }
+
+  .wp-block-column.two-thirds {
+
+    /* background: green; */
+    -webkit-box-flex: 0;
+    -webkit-flex-basis: 0;
+    flex-basis: 0;
+  }
+
+  .one-third {
+    width: 50%;
+  }
+}
+

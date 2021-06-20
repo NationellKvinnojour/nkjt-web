@@ -11,7 +11,6 @@ import LeaveButton from "./leave-button"
 
 const TopMain = ({ state }) => {
   const data = state.source.get(state.router.link)
-  console.log(data)
   return (
     <>
     <LeaveButton/>

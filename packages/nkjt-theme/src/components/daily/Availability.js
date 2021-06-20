@@ -8,9 +8,9 @@ export const Availability = ({ totalRooms, occupiedRooms }) => {
 
   return (
     <>
-      <Text>
+      <TextContainer>
         Vår samtalsjour på webben är öppet dagligen och du får prata med en av våra socionomer, vid behov kan vi också hjälpa dig med kontakter i din hemkommun för att få hjälp och stöd. Vi kan också hjälpa dig att komma i kontakt med polis och andra myndigheter.
-      </Text>
+      </TextContainer>
 
     {totalRooms - occupiedRooms ? 
       <Container>
@@ -26,6 +26,10 @@ export const Availability = ({ totalRooms, occupiedRooms }) => {
     </>
   )
 }
+
+const TextContainer = styled.p`
+  padding: 40px 10vw;
+`
 
 const Text = styled.p`
   padding: 40px;

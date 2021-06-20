@@ -8,13 +8,16 @@ import MobileMenu from "./menu"
 import Logo from "../../assets/logo.png"
 
 const Header = ({ state }) => {
-    
+  const { isMobileMenuOpen } = state.theme
+
     return (
         <HeaderContainer>
             <MobileMenuContainer>
+              {!isMobileMenuOpen && (
                 <Link link="/">
                     <MobileHeaderText>{state.frontity.description}</MobileHeaderText>
                 </Link>
+              )}
                 <MobileMenu />
             </MobileMenuContainer>
             <DesktopMenu>

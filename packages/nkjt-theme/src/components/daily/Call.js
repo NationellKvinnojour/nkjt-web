@@ -21,6 +21,8 @@ const CALL_OPTIONS = {
   },
   showLeaveButton: true,
   showFullscreenButton: true,
+  lang: "sv",
+  userName: "Anonym",
   //   showLocalVideo: false,
   //   showParticipantsBar: false,
 }
@@ -39,8 +41,10 @@ const Call = ({ roomName }) => {
 
     const newCallframe = DailyIframe.createFrame(
       videoRef.current,
-      CALL_OPTIONS
+      CALL_OPTIONS,
     )
+
+    newCallframe.setUserName("Gäst")
 
     newCallframe.join().then(() => {
       // setHeight((videoRef?.current?.clientWidth || 500) * 0.75)
@@ -48,7 +52,7 @@ const Call = ({ roomName }) => {
     })
 
     newCallframe.on("access-state-updated", (event) => {
-      fetch(`http://localhost:8080/messages/`, {
+      fetch(`https://nkjt.herokuapp.com/messages/`, {
         method: "POST",
         body: JSON.stringify({ event, room: roomName }),
       })

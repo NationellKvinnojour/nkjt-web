@@ -4,9 +4,10 @@ import { styled, connect, Global } from "frontity"
 import { CloseIcon, HamburgerIcon } from "./menu-icon"
 import MenuModal from "./menu-modal"
 
-function MobileMenu({ state, actions }) {
+const MobileMenu = ({ state, actions }) => {
   const { isMobileMenuOpen } = state.theme
-  
+  const parentItems = state.source.get(`/menu/${state.theme.menuUrl}/`).items
+
   return (
     <>
       <MenuToggle onClick={actions.theme.toggleMobileMenu}>
@@ -38,7 +39,7 @@ const MenuToggle = styled.button`
   height: 40px;
   width: 40px;
   display: none;
-  @media (max-width: 1000px) {
+  @media (max-width: 1024px) {
     display: flex;
     align-items: center;
     justify-content: center;

@@ -16,7 +16,16 @@ const determineColor = (title) => {
       color = theme.yellow
       break
     case "KONTAKT":
+    case "INFORMATION TILL MYNDIGHETER":
+    case "VÅR KOMPETENS ÄR TILL NYTTA FÖR ER":
+    case "BOKA OSS":
       color = theme.yellow
+      break
+    case "GE EN GÅVA":
+      color = theme.lightPurple
+      break
+    case "NKJT-TYGVÄSKOR":
+      color = theme.lightGrey
       break
     default:
       color = theme.teal
@@ -56,6 +65,11 @@ const Title = styled.h1`
 `
 
 const Content = styled.div`
+
+  > :first-child {
+    padding-top: 40px;
+  }
+
   > * {
     padding: 0 30px;
   }

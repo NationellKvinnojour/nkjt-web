@@ -5,7 +5,7 @@ export const Dashboard = () => {
   const [messages, setMessages] = useState([])
 
   const getMessages = () => {
-    fetch(`http://localhost:8080/messages/`, {
+    fetch(`https://nkjt.herokuapp.com/messages/`, {
       method: "GET",
     })
       .then((res) => res.json())
@@ -26,10 +26,11 @@ export const Dashboard = () => {
       {messages ? (
         messages.map((message) => {
           return (
-            <p key={message.date}>
-              {message.text} - {new Date(message.date).toString()}
-            </p>
-          )
+            <Container key={message.date}>
+              <p>{new Date(message.date).toLocaleString()}</p>
+              <p>{message.text}</p>
+            </Container>
+            )
         })
       ) : (
         <p>No messages</p>
@@ -38,3 +39,7 @@ export const Dashboard = () => {
   )
 }
 
+const Container = styled.div`
+  padding: 20px;
+  border-bottom: 2px solid hotpink;
+`

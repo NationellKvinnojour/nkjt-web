@@ -9,7 +9,7 @@ export const User = () => {
 
   // const getRooms = () => {
     useEffect(() => {
-      fetch(`http://localhost:8080/rooms/`, {
+      fetch(`https://nkjt.herokuapp.com/rooms/`, {
         method: "GET"
       })
         .then((res) => res.json())
@@ -22,7 +22,7 @@ export const User = () => {
   // }
 
   const getSessions = () => {
-    fetch(`http://localhost:8080/sessions/`, {
+    fetch(`https://nkjt.herokuapp.com/sessions/`, {
       method: "GET",
     })
       .then((res) => res.json())

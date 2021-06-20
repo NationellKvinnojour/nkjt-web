@@ -4,24 +4,44 @@ import { styled, connect } from "frontity"
 import Link from "../link"
 
 const MenuModal = ({ state }) => {
-  const { menu } = state.theme
-  const isThereLinks = menu != null && menu.length > 0
+  // const { menu } = state.theme
+  // const isThereLinks = menu != null && menu.length > 0
+
+  const parentItems = state.source.get(`/menu/${state.theme.menuUrl}/`).items
+
 
   return (
     <>
       <MenuOverlay />
       <MenuContent as="nav">
-        {isThereLinks &&
-          menu.map(([name, link]) => (
-            <MenuLink
-              key={name}
-              link={link}
-              aria-current={state.router.link === link ? "page" : undefined}
-            >
-              {name}
-            </MenuLink>
-          ))               
-        }
+        {parentItems.map((item) => {
+          const childItems = item.child_items
+          return (
+            <NavMenu key={item.ID}>
+              <NavItem>
+                <Link link={item.url}>
+                  {item.title}
+                </Link>
+                {item.child_items && (
+                  <>
+                    <NavArrow />                  
+                  </>
+                )}
+              </NavItem>
+              {item.child_items && (
+                <ChildMenu>
+                  {childItems.map((childItem) => {
+                    return (
+                      <NavItem key={childItem.ID} className="child-navitem">
+                        <Link link={childItem.url}>{childItem.title}</Link>
+                      </NavItem>
+                    )
+                  })}
+                </ChildMenu>
+              )}
+            </NavMenu>
+          )
+        })}
       </MenuContent>
     </>
   )
@@ -40,24 +60,43 @@ const MenuOverlay = styled.div`
 
 const MenuContent = styled.div`
   z-index: 3;
+  padding: 60px 0 0 20px;
+
+  @media(min-width: 720px) {
+    padding: 60px 0 0 60px;
+  }
 `
 
-const MenuLink = styled(Link)`
-  width: 100%;
-  display: inline-block;
-  outline: 0;
-  font-size: 20px;
-  text-align: center;
-  padding: 1.2rem 0;
-  &:hover,
-  &:focus {
-    background-color: rgba(0, 0, 0, 0.05);
-  }
-  /* styles for active link */
-  &[aria-current="page"] {
-    color: yellow;
-    font-weight: bold;
+const NavMenu = styled.div`
+  padding-bottom: 40px;
+`
+
+const NavItem = styled.div`
+  padding-bottom: 15px;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+`
+
+const NavArrow = styled.span`
+  width: 0;
+	height: 0;
+	border-left: 7px solid transparent;
+	border-right: 7px solid transparent;
+	border-top: 10px solid #fff;
+  margin-left: 7px;
+  transition: 0.4s;
+`
+
+// Child Nav menu
+const ChildMenu = styled.span`
+  z-index: 1;
+  text-align: left;
+  a {
+    color: white;
+    margin-left: 20px;
   }
 `
+
 
 export default connect(MenuModal)
