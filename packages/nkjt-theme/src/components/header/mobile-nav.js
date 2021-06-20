@@ -6,7 +6,6 @@ import MenuModal from "./menu-modal"
 
 const MobileNav = ({ state, actions }) => {
   const { isMobileMenuOpen } = state.theme
-  const parentItems = state.source.get(`/menu/${state.theme.menuUrl}/`).items
 
   return (
     <>

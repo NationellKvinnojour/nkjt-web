@@ -19,6 +19,7 @@ const nkjtTheme = {
       menu: [],
       menuUrl: "navbar-menu",
       isMobileMenuOpen: false,
+      activeLink: "/om-oss",
       featured: {
         showOnList: false,
         showOnPost: false,
@@ -41,6 +42,9 @@ const nkjtTheme = {
         libraries.html2react.processors.push(image)
         libraries.source.handlers.push(videoHandler, adminHandler, homePageHandler, menuHandler)
       },
+      changeActiveLink: ({ state }) => {
+        state.theme.activeLink = state.router.link
+      }
     },
   },
   libraries: {

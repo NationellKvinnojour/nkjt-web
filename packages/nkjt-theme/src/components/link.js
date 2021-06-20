@@ -6,6 +6,7 @@ const NkjtLink = ({ children, ...props }) => {
   const { state, actions } = useConnect()
 
   const onClick = () => {
+    actions.theme.changeActiveLink({...props})
     if(state.theme.isMobileMenuOpen) {
         actions.theme.closeMobileMenu()
     }

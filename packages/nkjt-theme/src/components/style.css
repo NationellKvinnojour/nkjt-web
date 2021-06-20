@@ -65,7 +65,7 @@
   margin-bottom: .5em;
 }
 
-.wp-block-buttons .wp-block-button:last-child {
+.wp-block-buttons .wp-block-button:last-of-type {
   margin-right: 0;
 }
 
@@ -74,7 +74,7 @@
   margin-left: .5em;
 }
 
-.wp-block-buttons.alignright .wp-block-button:first-child {
+.wp-block-buttons.alignright .wp-block-button:first-of-type {
   margin-left: 0;
 }
 
@@ -83,7 +83,7 @@
   margin-right: .5em;
 }
 
-.wp-block-buttons.alignleft .wp-block-button:last-child {
+.wp-block-buttons.alignleft .wp-block-button:last-of-type {
   margin-right: 0;
 }
 
@@ -172,7 +172,7 @@
     flex-basis: calc(50% - 1em)!important;
     flex-grow: 0;
   }
-  .wp-block-column:nth-child(2n) {
+  .wp-block-column:nth-of-type(2n) {
     margin-left: 2em;
   }
 }
@@ -185,7 +185,7 @@
   .wp-block-column[style*=flex-basis] {
     flex-grow: 0;
   }
-  .wp-block-column:not(:first-child) {
+  .wp-block-column:not(:first-of-type) {
     margin-left: 2em;
   }
 }
@@ -670,7 +670,7 @@
   }
 }
 
-.blocks-gallery-grid .blocks-gallery-image:last-child, .blocks-gallery-grid .blocks-gallery-item:last-child, .wp-block-gallery .blocks-gallery-image:last-child, .wp-block-gallery .blocks-gallery-item:last-child {
+.blocks-gallery-grid .blocks-gallery-image:last-of-type, .blocks-gallery-grid .blocks-gallery-item:last-of-type, .wp-block-gallery .blocks-gallery-image:last-of-type, .wp-block-gallery .blocks-gallery-item:last-of-type {
   margin-right: 0;
 }
 
@@ -825,31 +825,31 @@ h1.has-background, h2.has-background, h3.has-background, h4.has-background, h5.h
   .wp-block-latest-posts.columns-2 li {
     width: calc(50% - .625em);
   }
-  .wp-block-latest-posts.columns-2 li:nth-child(2n) {
+  .wp-block-latest-posts.columns-2 li:nth-of-type(2n) {
     margin-right: 0;
   }
   .wp-block-latest-posts.columns-3 li {
     width: calc(33.33333% - .83333em);
   }
-  .wp-block-latest-posts.columns-3 li:nth-child(3n) {
+  .wp-block-latest-posts.columns-3 li:nth-of-type(3n) {
     margin-right: 0;
   }
   .wp-block-latest-posts.columns-4 li {
     width: calc(25% - .9375em);
   }
-  .wp-block-latest-posts.columns-4 li:nth-child(4n) {
+  .wp-block-latest-posts.columns-4 li:nth-of-type(4n) {
     margin-right: 0;
   }
   .wp-block-latest-posts.columns-5 li {
     width: calc(20% - 1em);
   }
-  .wp-block-latest-posts.columns-5 li:nth-child(5n) {
+  .wp-block-latest-posts.columns-5 li:nth-of-type(5n) {
     margin-right: 0;
   }
   .wp-block-latest-posts.columns-6 li {
     width: calc(16.66667% - 1.04167em);
   }
-  .wp-block-latest-posts.columns-6 li:nth-child(6n) {
+  .wp-block-latest-posts.columns-6 li:nth-of-type(6n) {
     margin-right: 0;
   }
 }
@@ -1871,23 +1871,23 @@ p.wp-block-subhead {
   border-bottom: 1px solid #f0f0f0;
 }
 
-.wp-block-table.is-style-stripes tbody tr:nth-child(odd) {
+.wp-block-table.is-style-stripes tbody tr:nth-of-type(odd) {
   background-color: #f0f0f0;
 }
 
-.wp-block-table.is-style-stripes.has-subtle-light-gray-background-color tbody tr:nth-child(odd) {
+.wp-block-table.is-style-stripes.has-subtle-light-gray-background-color tbody tr:nth-of-type(odd) {
   background-color: #f3f4f5;
 }
 
-.wp-block-table.is-style-stripes.has-subtle-pale-green-background-color tbody tr:nth-child(odd) {
+.wp-block-table.is-style-stripes.has-subtle-pale-green-background-color tbody tr:nth-of-type(odd) {
   background-color: #e9fbe5;
 }
 
-.wp-block-table.is-style-stripes.has-subtle-pale-blue-background-color tbody tr:nth-child(odd) {
+.wp-block-table.is-style-stripes.has-subtle-pale-blue-background-color tbody tr:nth-of-type(odd) {
   background-color: #e7f5fe;
 }
 
-.wp-block-table.is-style-stripes.has-subtle-pale-pink-background-color tbody tr:nth-child(odd) {
+.wp-block-table.is-style-stripes.has-subtle-pale-pink-background-color tbody tr:nth-of-type(odd) {
   background-color: #fcf0ef;
 }
 
@@ -1904,11 +1904,11 @@ p.wp-block-subhead {
   padding: 0;
 }
 
-.wp-block-text-columns .wp-block-column:first-child {
+.wp-block-text-columns .wp-block-column:first-of-type {
   margin-left: 0;
 }
 
-.wp-block-text-columns .wp-block-column:last-child {
+.wp-block-text-columns .wp-block-column:last-of-type {
   margin-right: 0;
 }
 

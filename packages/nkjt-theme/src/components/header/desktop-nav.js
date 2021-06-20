@@ -1,20 +1,45 @@
-  import React from "react"
+import React from "react"
 import { connect, styled } from "frontity"
 import Link from "../link"
 
+import theme from "../themeColors"
+
 const DesktopNav = ({ state }) => {
   const parentItems = state.source.get(`/menu/${state.theme.menuUrl}/`).items
+  const activeLink = state.theme.activeLink.replace(/\//g, "")
+
+  // Send parent-link
+  const findActiveLink = (item) => {
+    let parent = ""
+
+    // Check if the parent has child items
+    if (item.child_items) {
+      // Check the child + parent if it's the active one. If it is, change parent
+      // variable to the parent in question
+      item.child_items.forEach((childItem => {
+        if (childItem.slug === activeLink || item.slug === activeLink) {
+          parent = item.slug
+        }
+      }))
+      // Return if the parent is the slug?? what
+      return parent === item.slug
+    } else {
+      //Else return if the item.slug is active
+      return activeLink === item.slug
+    }
+  }
 
   return (
     <NavContainer>
       {parentItems.map((item) => {
+        // findActiveLink(item)
         const childItems = item.child_items
           return (
             <NavMenu key={item.ID}>
-              <ParentNavItem>
-                <Link link={item.url}>
+              <ParentNavItem activeLink={findActiveLink(item)}>
+                <StyledLink link={item.url}>
                   {item.title}
-                </Link>
+                </StyledLink>
                 {item.child_items && (
                   <>
                     <NavArrow />                  
@@ -25,8 +50,8 @@ const DesktopNav = ({ state }) => {
                 <ChildMenu>
                   {childItems.map((childItem) => {
                     return (
-                      <ChildNavItem key={childItem.ID} className="child-navitem">
-                        <Link link={childItem.url}>{childItem.title}</Link>
+                      <ChildNavItem key={childItem.ID}>
+                        <StyledLink link={childItem.url}>{childItem.title}</StyledLink>
                       </ChildNavItem>
                     )
                   })}
@@ -46,7 +71,6 @@ const NavContainer = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  /* margin-bottom: 50px; */
   margin-left: 100px;
 
   @media screen and (max-width: 1000px) {
@@ -66,6 +90,9 @@ const NavItem = styled.div`
     background-color: #e07c3e;
     border-radius: 20px;
   }
+  a {
+    font-weight: normal;
+  }
   a:hover {
     color: black;
   }
@@ -75,6 +102,8 @@ const ParentNavItem = styled(NavItem)`
   display: flex;
   align-items: center;
   justify-content: center;
+  background: ${props => props.activeLink && theme.yellow};
+  border-radius: 20px;
 `
 
 const ChildNavItem = styled(NavItem)`
@@ -83,10 +112,14 @@ const ChildNavItem = styled(NavItem)`
   background-color: #fff;
   width: 100%;
   padding: 10px 18px;
-  &:hover{
+  &:hover {
     background-color: #f2f2f2;
     border-radius: 0;
   }
+`
+
+const StyledLink = styled(Link)`
+  width: 100%;
 `
 
 const NavArrow = styled.span`
@@ -108,6 +141,7 @@ const ChildMenu = styled.span`
   z-index: 1;
   text-align: left;
   background-color: #fff;
+  
   ${NavMenu}:hover & {
     display: flex;
     flex-direction: column;
