@@ -28,14 +28,14 @@ const settings = {
           homepage: "/",
           // Below you need to write your wordpress url
           // url: "http://localhost:8888",
-          url: "http://nkjt.se.linux348.unoeuro-server.com/"
-          // url: "http://hippiekick.byethost3.com/",
-          // api: "http://hippiekick.byethost3.com/wp-json"
+          url: "https://brunemalm.se/"
         }
       }
     },
     "@frontity/tiny-router",
-    "@frontity/html2react"
+    "@frontity/html2react",
+    "@aamodtgroup/frontity-contact-form-7"
+
   ]
 }
 
