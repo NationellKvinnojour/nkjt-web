@@ -4,32 +4,36 @@ import Call from "./Call"
 import { styled } from "frontity"
 
 export const User = () => {
+  const [loading, setLoading] = useState(true)
   const [rooms, setRooms] = useState([])
   const [sessions, setSessions] = useState([])
 
   // const getRooms = () => {
     useEffect(() => {
+      setLoading(true)
       fetch(`https://nkjt.herokuapp.com/rooms/`, {
         method: "GET"
       })
         .then((res) => res.json())
         .then((json) => {
           setRooms(json.data)
+          setLoading(false)
         })
         .catch((err) => console.log("Error: " + err))
-    },[])
+    }, [])
     
   // }
 
   const getSessions = () => {
+    // setLoading(true)
     fetch(`https://nkjt.herokuapp.com/sessions/`, {
       method: "GET",
     })
       .then((res) => res.json())
       .then((json) => {
-        const ongoingSessions = json.data.filter((sesh) => sesh.ongoing)
+        const ongoingSessions = json.data.filter((session) => session.ongoing)
         setSessions(ongoingSessions)
-        // console.log("🌻", ongoingSessions)
+        // setLoading(false)
       })
       .catch((err) => console.log("Error: " + err))
   }
@@ -54,7 +58,8 @@ export const User = () => {
       <Heading>JOURSAMTAL VIA WEBB</Heading>
       <Availability
         totalRooms={totalRooms}
-        occupiedRooms={occupiedRooms}/>
+        occupiedRooms={occupiedRooms}
+        loading={loading}/>
       {rooms.map(room => (
         !checkOccupied(room.name) && (
           <Call key={room.id} roomName={room.name}/>
