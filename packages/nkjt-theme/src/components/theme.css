@@ -18,6 +18,10 @@ h1 {
   font-family: "Roboto", sans-serif;
 }
 
+h2 {
+  letter-spacing: 1px;
+}
+
 a {
   font-weight: bold;
 }
