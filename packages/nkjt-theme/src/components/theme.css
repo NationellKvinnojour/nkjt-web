@@ -14,10 +14,6 @@
   line-height: 1.6;
 }
 
-body {
-  /* padding: 30px; */
-}
-
 h1 {
   font-family: "Roboto", sans-serif;
 }
@@ -306,3 +302,31 @@ p.has-background {
   }
 }
 
+/* FORM */
+.wpcf7 p {
+  font-size: 18px;
+}
+
+.wpcf7 .extra-text {
+  font-size: 12px;
+  color: darkslategray;
+}
+
+.wpcf7 input {
+  border: 1px solid black;
+  border-radius: 4px;
+  font-size: 18px;
+  padding-left: 5px;
+}
+
+.wpcf7 select {
+  font-size: 18px;
+  height: 30px;
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 0 5px;
+}
+
+.has-background .has-background {
+  padding: 30px 20px;
+}

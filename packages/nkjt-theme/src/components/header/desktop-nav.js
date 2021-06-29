@@ -40,13 +40,13 @@ const DesktopNav = ({ state }) => {
                 <StyledLink link={item.url}>
                   {item.title}
                 </StyledLink>
-                {item.child_items && (
+                {childItems && (
                   <>
                     <NavArrow />                  
                   </>
                 )}
               </ParentNavItem>
-              {item.child_items && (
+              {childItems && (
                 <ChildMenu>
                   {childItems.map((childItem) => {
                     return (

@@ -18,13 +18,13 @@ const MenuModal = ({ state }) => {
                 <Link link={item.url}>
                   {item.title}
                 </Link>
-                {item.child_items && (
+                {childItems && (
                   <>
                     <NavArrow />                  
                   </>
                 )}
               </NavItem>
-              {item.child_items && (
+              {childItems && (
                 <ChildMenu>
                   {childItems.map((childItem) => {
                     return (
@@ -55,8 +55,9 @@ const MenuOverlay = styled.div`
 `
 
 const MenuContent = styled.div`
+  width: 100%;
   z-index: 3;
-  padding: 60px 0 0 20px;
+  padding: 80px 40px;
 
   @media(min-width: 720px) {
     padding: 60px 0 0 60px;
@@ -64,11 +65,10 @@ const MenuContent = styled.div`
 `
 
 const NavMenu = styled.div`
-  padding-bottom: 40px;
+  padding: 10px 0;
 `
 
 const NavItem = styled.div`
-  padding-bottom: 15px;
   font-size: 22px;
   display: flex;
   align-items: center;
@@ -77,10 +77,10 @@ const NavItem = styled.div`
 const NavArrow = styled.span`
   width: 0;
 	height: 0;
-	border-left: 7px solid transparent;
-	border-right: 7px solid transparent;
-	border-top: 10px solid #fff;
-  margin-left: 7px;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-top: 14px solid #fff;
+  margin-left: auto;
   transition: 0.4s;
 `
 

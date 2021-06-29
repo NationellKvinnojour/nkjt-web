@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react"
 import { Availability } from "./Availability"
 import Call from "./Call"
-import { styled } from "frontity"
+import { connect, styled } from "frontity"
 
-export const User = () => {
+const User = ({ state }) => {
   const [loading, setLoading] = useState(true)
   const [rooms, setRooms] = useState([])
   const [sessions, setSessions] = useState([])
@@ -80,3 +80,5 @@ const RoomContainer = styled.div`
   display: flex;
   flex-direction: column;
 `
+
+export default connect(User)

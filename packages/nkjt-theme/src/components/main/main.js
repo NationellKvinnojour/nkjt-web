@@ -8,22 +8,20 @@ import Page from "./page"
 
 import ErrorPage from "./error"
 import Home from "./home"
-import { User } from "../daily/User"
+import User from "../daily/User"
 
 const Main = ({ state }) => {
   const data = state.source.get(state.router.link)
   console.log(data)
   return (
-    <>
-        <Switch>
-          <List when={data.isArchive} />
-          <Post when={data.isPost} />
-          <Page when={data.isPage} />
-          <Home when={data.isHomePage} />
-          <User when={data.isVideoPage} />
-          <ErrorPage when={data.isError} />
-        </Switch>
-    </>
+    <Switch>
+      <List when={data.isArchive} />
+      <Post when={data.isPost} />
+      <Page when={data.isPage} />
+      <Home when={data.isHomePage} />
+      <User when={data.isVideoPage} />
+      <ErrorPage when={data.isError} />
+    </Switch>
   )
 }
 

@@ -22,6 +22,7 @@ const determineColor = (title) => {
       color = theme.yellow
       break
     case "GE EN GÅVA":
+    case "BLI MEDLEM":
       color = theme.lightPurple
       break
     case "NKJT-TYGVÄSKOR":
