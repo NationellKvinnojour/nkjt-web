@@ -80,7 +80,7 @@ const NavArrow = styled.span`
 	border-left: 10px solid transparent;
 	border-right: 10px solid transparent;
 	border-top: 14px solid #fff;
-  margin-left: auto;
+  margin-left: 14px;
   transition: 0.4s;
 `
 
