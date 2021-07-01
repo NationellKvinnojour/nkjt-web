@@ -6,22 +6,61 @@ import ClosedDoor from "../../assets/door-closed.svg"
 
 export const Availability = ({ totalRooms, occupiedRooms, loading }) => {
 
+  //case: loading
+  if (loading) {
+    return (
+      <Container>
+        <Text>Laddar...</Text>
+      </Container>
+    )
+    //case: not loading
+  } else {
+    //case: some open rooms
+    if (totalRooms && totalRooms > occupiedRooms) {
+      return (
+        <Container>
+          <Text>Just nu är {totalRooms - occupiedRooms} mötesrum tillgängliga. Tryck på knappen "Begär att få gå med" för att påbörja. En kurator kommer därefter att släppa in dig i mötesrummet.</Text>
+          <OpenImage src={OpenDoor}/>
+        </Container>
+      )
+      //case: all rooms occupied
+    } else if (totalRooms && totalRooms === occupiedRooms) {
+      return (
+        <Container>
+          <Text>Just nu är alla rum upptagna. Pröva igen om en stund.</Text>
+          <ClosedImage src={ClosedDoor}/>
+        </Container>
+      )
+      //case: no rooms open (outside working hours)
+    } else {
+      return (
+        <Container>
+          <Text>Chatten är för närvarande stängd. Pröva igen under våra öppettider som är XXX eller skriv till oss under fliken Kontakt i menyn, alternativt mejla oss på XXX.</Text>
+          <ClosedImage src={ClosedDoor}/>
+        </Container>
+      )
+    }
+  }
+
   return (
     <>
-      <TextContainer>
-        Vår samtalsjour på webben är öppet dagligen och du får prata med en av våra socionomer, vid behov kan vi också hjälpa dig med kontakter i din hemkommun för att få hjälp och stöd. Vi kan också hjälpa dig att komma i kontakt med polis och andra myndigheter.
-      </TextContainer>
+
       <Container>
+     
         {loading ? <p>Laddar...</p> :
-          totalRooms - occupiedRooms ? 
+          totalRooms > occupiedRooms ? 
             <>
               <Text>Just nu är {totalRooms - occupiedRooms} mötesrum tillgängliga. Tryck på knappen "Begär att få gå med" för att påbörja. En kurator kommer därefter att släppa in dig i mötesrummet.</Text>
               <OpenImage src={OpenDoor}/>
             </>
           : 
             <>
-              <Text>Just nu är alla rum upptagna. Pröva igen om en stund.</Text>
-              <ClosedImage src={ClosedDoor}/>
+            {totalRooms &&
+              <>
+                <Text>Just nu är alla rum upptagna. Pröva igen om en stund.</Text>
+                <ClosedImage src={ClosedDoor}/>
+              </>
+            }
             </>
         }
       </Container>
@@ -29,9 +68,6 @@ export const Availability = ({ totalRooms, occupiedRooms, loading }) => {
   )
 }
 
-const TextContainer = styled.p`
-  padding: 40px 10vw;
-`
 
 const Text = styled.p`
   padding: 40px;

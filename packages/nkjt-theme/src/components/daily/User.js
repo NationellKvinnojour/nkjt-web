@@ -56,6 +56,9 @@ const User = ({ state }) => {
   return (
     <RoomContainer>
       <Heading>JOURSAMTAL VIA WEBB</Heading>
+      <TextContainer>
+        Vår samtalsjour på webben är öppet dagligen och du får prata med en av våra socionomer, vid behov kan vi också hjälpa dig med kontakter i din hemkommun för att få hjälp och stöd. Vi kan också hjälpa dig att komma i kontakt med polis och andra myndigheter.
+      </TextContainer>
       <Availability
         totalRooms={totalRooms}
         occupiedRooms={occupiedRooms}
@@ -74,6 +77,10 @@ const Heading = styled.h1`
   text-align: center;
   padding: 40px;
   margin: 0;
+`
+
+const TextContainer = styled.p`
+  padding: 40px 10vw;
 `
 
 const RoomContainer = styled.div`
