@@ -7,31 +7,6 @@ import MobileNav from "./mobile-nav"
 
 import Logo from "../../assets/logo.png"
 
-const Header = ({ state }) => {
-  const { isMobileMenuOpen } = state.theme
-
-    return (
-        <HeaderContainer>
-            <MobileMenuContainer>
-              {!isMobileMenuOpen && (
-                <Link link="/">
-                    <MobileHeaderText>{state.frontity.description}</MobileHeaderText>
-                </Link>
-              )}
-                <MobileNav />
-            </MobileMenuContainer>
-            <DesktopMenu>
-                <Link link="/">
-                    <HeaderLogo src={Logo} alt="NKJT loggan"/>
-                </Link>
-                <DesktopNav />
-            </DesktopMenu>
-        </HeaderContainer>
-    )
-}
-
-export default connect(Header)
-
 const HeaderContainer = styled.header`
   background-color: #583666;
   color: #fff;
@@ -89,3 +64,27 @@ const HeaderLogo = styled.img`
     max-width: 350px;
   }
 `
+
+const Header = ({ state }) => {
+  const { isMobileMenuOpen } = state.theme
+  return (
+    <HeaderContainer>
+      <MobileMenuContainer>
+        {!isMobileMenuOpen && (
+          <Link link="/">
+            <MobileHeaderText>{state.frontity.description}</MobileHeaderText>
+          </Link>
+        )}
+        <MobileNav />
+      </MobileMenuContainer>
+      <DesktopMenu>
+        <Link link="/">
+          <HeaderLogo src={Logo} alt="NKJT loggan"/>
+        </Link>
+        <DesktopNav />
+      </DesktopMenu>
+    </HeaderContainer>
+  )
+}
+
+export default connect(Header)

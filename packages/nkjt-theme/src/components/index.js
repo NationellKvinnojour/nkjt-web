@@ -1,11 +1,7 @@
 import React from "react"
-import { Global, connect, css, styled, Head } from "frontity"
+import { Global, connect, css, Head } from "frontity"
 
-import Header from "./header/header"
 import TopMain from "./main/top-main"
-import Footer from "./footer/footer"
-
-import LandingPage from "./main/landing-page"
 
 import gutenbergStyle from "./style.css"
 import gutenbergTheme from "./theme.css"
@@ -16,7 +12,6 @@ const Root = () => {
     <>
       <Head>
         <title>NKJT</title>
-        <meta name="description" content=""></meta>
       </Head>
 
       <Global styles={globalStyles} />
@@ -26,11 +21,7 @@ const Root = () => {
       <Global styles={css(gutenbergStyle)} />     
       <Global styles={css(gutenbergTheme)} />
 
-
-      {/* <LandingPage /> */}
-      {/* <Header /> */}
       <TopMain />
-      {/* <Footer /> */}
     </>
   )
 }

@@ -4,69 +4,6 @@ import Link from "../link"
 
 import theme from "../themeColors"
 
-const DesktopNav = ({ state }) => {
-  const parentItems = state.source.get(`/menu/${state.theme.menuUrl}/`).items
-  const activeLink = state.theme.activeLink.replace(/\//g, "")
-
-  // Send parent-link
-  const findActiveLink = (item) => {
-    let parent = ""
-
-    // Check if the parent has child items
-    if (item.child_items) {
-      // Check the child + parent if it's the active one. If it is, change parent
-      // variable to the parent in question
-      item.child_items.forEach((childItem => {
-        if (childItem.slug === activeLink || item.slug === activeLink) {
-          parent = item.slug
-        }
-      }))
-      // Return if the parent is the slug?? what
-      return parent === item.slug
-    } else {
-      //Else return if the item.slug is active
-      return activeLink === item.slug
-    }
-  }
-
-  return (
-    <NavContainer>
-      {parentItems.map((item) => {
-        // findActiveLink(item)
-        const childItems = item.child_items
-          return (
-            <NavMenu key={item.ID}>
-              <ParentNavItem activeLink={findActiveLink(item)}>
-                <StyledLink link={item.url}>
-                  {item.title}
-                </StyledLink>
-                {childItems && (
-                  <>
-                    <NavArrow />                  
-                  </>
-                )}
-              </ParentNavItem>
-              {childItems && (
-                <ChildMenu>
-                  {childItems.map((childItem) => {
-                    return (
-                      <ChildNavItem key={childItem.ID}>
-                        <StyledLink link={childItem.url}>{childItem.title}</StyledLink>
-                      </ChildNavItem>
-                    )
-                  })}
-                </ChildMenu>
-              )}
-            </NavMenu>
-          )
-      })}
-    </NavContainer>
-  )
-}
-
-export default connect(DesktopNav)
-
-// Main nav container
 const NavContainer = styled.nav`  
   display: flex;
   align-items: center;
@@ -148,3 +85,57 @@ const ChildMenu = styled.span`
     align-items: center;
   }
 `
+
+const DesktopNav = ({ state }) => {
+  const parentItems = state.source.get(`/menu/${state.theme.menuUrl}/`).items
+  const activeLink = state.theme.activeLink.replace(/\//g, "")
+
+  // To be able to style active link
+  const findActiveLink = (item) => {
+    let parent = ""
+
+    if (item.child_items) {
+      item.child_items.forEach((childItem => {
+        if (childItem.slug === activeLink || item.slug === activeLink) {
+          parent = item.slug
+        }
+      }))
+      return parent === item.slug
+    } else {
+      return activeLink === item.slug
+    }
+  }
+
+  return (
+    <NavContainer>
+      {parentItems.map((item) => {
+        const childItems = item.child_items
+          return (
+            <NavMenu key={item.ID}>
+              <ParentNavItem activeLink={findActiveLink(item)}>
+                <StyledLink link={item.url}>
+                  {item.title}
+                </StyledLink>
+                {childItems && (
+                  <NavArrow />                  
+                )}
+              </ParentNavItem>
+              {childItems && (
+                <ChildMenu>
+                  {childItems.map((childItem) => {
+                    return (
+                      <ChildNavItem key={childItem.ID}>
+                        <StyledLink link={childItem.url}>{childItem.title}</StyledLink>
+                      </ChildNavItem>
+                    )
+                  })}
+                </ChildMenu>
+              )}
+            </NavMenu>
+          )
+      })}
+    </NavContainer>
+  )
+}
+
+export default connect(DesktopNav)

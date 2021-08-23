@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import { connect, styled } from "frontity"
+import React from "react"
+import { connect } from "frontity"
 import Switch from "@frontity/components/switch"
 
 import List from "./list"
@@ -12,7 +12,6 @@ import User from "../daily/User"
 
 const Main = ({ state }) => {
   const data = state.source.get(state.router.link)
-  console.log(data)
   return (
     <Switch>
       <List when={data.isArchive} />
@@ -26,19 +25,3 @@ const Main = ({ state }) => {
 }
 
 export default connect(Main)
-
-const MainContainer = styled.main`
-  /* margin: 20px; */
-
-  & > img {
-    max-width: 100%;
-    object-fit: contain;
-  }
-  & > p {
-    line-height: 1.5em;
-  }
-  @media (min-width: 1143px) {
-    margin: auto;
-    max-width: 1100px;
-  }
-`

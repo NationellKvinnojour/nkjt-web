@@ -1,45 +1,9 @@
 import React, { useState } from "react"
 import { connect, styled } from "frontity"
-import Link from "@frontity/components/link"
 
 import Woman from "../../assets/kvinnosymbol.jpeg"
 import Hands from "../../assets/nkjt-hands.png"
 import Hug from "../../assets/nkjt-care.png"
-
-// import Main from "./main"
-
-const Home = ({ state }) => {
-  const data = state.source.get(state.router.link)
-  return (
-    <Container>
-      <Header>
-        <TextContainer>
-          <Title>EN VÅLDSFRI VÄRLD FÖR KVINNOR SOM TALAR TECKENSPRÅK.</Title>
-          <Text>Vi hjälper döva, hörselskadade och dövblinda kvinnor, icke-binära och unga tjejer från 15 år och uppåt, med att ta makten över sina liv från våld och förtryck. Här hos oss får man stöd och hjälp direkt på svenskt teckenspråk.</Text>
-        </TextContainer>
-        <HeroImage src={Hands} />
-      </Header>
-      <Main>
-        <Image src={Hug} />
-        <MainTextContainer>
-          <SmallHeading>BLI MEDLEM</SmallHeading>
-          <Text>Bli medlem i Nationell kvinnojour och stöd på teckenspråk och stöd Sveriges enda jourverksamhet för kvinnor på teckenspråk.</Text>
-          <Button>
-            <a
-              href="http://www.nkjt.se/st%C3%B6d-oss/bli-medlem-hos-nkjt-44501899"
-              target="_blank"
-              rel="noopener noreferrer">
-              Klicka här för att bli medlem hos NKJT
-            </a>
-            </Button>
-        </MainTextContainer>
-      </Main>
-      <Image src={Woman} />
-    </Container>
-  )
-}
-
-export default connect(Home)
 
 const Container = styled.div`
   display: flex;
@@ -139,9 +103,7 @@ const Image = styled.img`
 
   @media (min-width: 900px) {
     width: 50%;
-
   }
-
 `
 
 const SmallHeading = styled.h2`
@@ -149,3 +111,35 @@ const SmallHeading = styled.h2`
   font-size: 18px;
   letter-spacing: 2px;
 `
+
+const Home = ({ state }) => {
+  return (
+    <Container>
+      <Header>
+        <TextContainer>
+          <Title>EN VÅLDSFRI VÄRLD FÖR KVINNOR SOM TALAR TECKENSPRÅK.</Title>
+          <Text>Vi hjälper döva, hörselskadade och dövblinda kvinnor, icke-binära och unga tjejer från 15 år och uppåt, med att ta makten över sina liv från våld och förtryck. Här hos oss får man stöd och hjälp direkt på svenskt teckenspråk.</Text>
+        </TextContainer>
+        <HeroImage src={Hands} />
+      </Header>
+      <Main>
+        <Image src={Hug} />
+        <MainTextContainer>
+          <SmallHeading>BLI MEDLEM</SmallHeading>
+          <Text>Bli medlem i Nationell kvinnojour och stöd på teckenspråk och stöd Sveriges enda jourverksamhet för kvinnor på teckenspråk.</Text>
+          <Button>
+            <a
+              href="http://www.nkjt.se/st%C3%B6d-oss/bli-medlem-hos-nkjt-44501899"
+              target="_blank"
+              rel="noopener noreferrer">
+              Klicka här för att bli medlem hos NKJT
+            </a>
+            </Button>
+        </MainTextContainer>
+      </Main>
+      <Image src={Woman} />
+    </Container>
+  )
+}
+
+export default connect(Home)

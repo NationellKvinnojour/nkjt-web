@@ -1,10 +1,9 @@
-const menuHandler = {
+export const menuHandler = {
     name: "menus",
     priority: 10,
     pattern: "/menu/:slug",
     head_tags: false,
     func: async ({ link, params, state, libraries }) => {
-      // console.log("PARAMS:", params)
       const { slug } = params
   
       // Fetch the menu data from the endpoint
@@ -17,13 +16,11 @@ const menuHandler = {
   
       // Add the menu items to source.data
       const menu = state.source.data[link]
-      // console.log(link);
+
       Object.assign(menu, {
         items: menuData.items,
         isMenu: true,
         head_tags: false
       })
-    },
+    }
   }
-  
-  export default menuHandler

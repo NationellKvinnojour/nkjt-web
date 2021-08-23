@@ -34,27 +34,9 @@ const determineColor = (title) => {
   return color
 }
 
-const Page = ({ state, libraries }) => {
-  const data = state.source.get(state.router.link)
-  const page = state.source[data.type][data.id]
-  const Html2React = libraries.html2react.Component
-
-  return (
-    <Wrapper>
-      <Title backgroundColor={determineColor(page.title.rendered)}>{page.title.rendered}</Title>
-      <Content>
-        <Html2React html={page.content.rendered} />
-      </Content>
-    </Wrapper>
-  )
-}
-
-export default connect(Page)
-
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-
 `
 
 const Title = styled.h1`
@@ -95,3 +77,20 @@ const Content = styled.div`
     }
   }
 `
+
+const Page = ({ state, libraries }) => {
+  const data = state.source.get(state.router.link)
+  const page = state.source[data.type][data.id]
+  const Html2React = libraries.html2react.Component
+
+  return (
+    <Wrapper>
+      <Title backgroundColor={determineColor(page.title.rendered)}>{page.title.rendered}</Title>
+      <Content>
+        <Html2React html={page.content.rendered} />
+      </Content>
+    </Wrapper>
+  )
+}
+
+export default connect(Page)

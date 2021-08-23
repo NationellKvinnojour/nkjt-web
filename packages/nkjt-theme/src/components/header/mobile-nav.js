@@ -4,29 +4,6 @@ import { styled, connect, Global } from "frontity"
 import { CloseIcon, HamburgerIcon } from "./hamburger-icon"
 import MenuModal from "./menu-modal"
 
-const MobileNav = ({ state, actions }) => {
-  const { isMobileMenuOpen } = state.theme
-
-  return (
-    <>
-      <MenuToggle onClick={actions.theme.toggleMobileMenu}>
-          {isMobileMenuOpen ? (
-              <>
-                  {/* Add some style to the body when menu is open,
-                  to prevent body scroll */}
-                  <Global styled={{ body: { overflowY: "hidden" }}} />
-                  <CloseIcon color="white" size="20px" />
-              </>
-          ) : (
-              <HamburgerIcon color="white" size="30px" />
-          )}
-      </MenuToggle>
-      {/* If the menu is open, render the menu modal */}
-      {isMobileMenuOpen && <MenuModal />}
-    </>
-  )
-}
-
 const MenuToggle = styled.button`
   position: absolute;
   top: 15px;
@@ -45,5 +22,25 @@ const MenuToggle = styled.button`
     justify-content: center;
   }
 `
+
+const MobileNav = ({ state, actions }) => {
+  const { isMobileMenuOpen } = state.theme
+
+  return (
+    <>
+      <MenuToggle onClick={actions.theme.toggleMobileMenu}>
+        {isMobileMenuOpen ? (
+          <>
+            <Global styled={{ body: { overflowY: "hidden" }}} />
+            <CloseIcon color="white" size="20px" />
+          </>
+        ) : (
+          <HamburgerIcon color="white" size="30px" />
+        )}
+      </MenuToggle>
+      {isMobileMenuOpen && <MenuModal />}
+    </>
+  )
+}
 
 export default connect(MobileNav)

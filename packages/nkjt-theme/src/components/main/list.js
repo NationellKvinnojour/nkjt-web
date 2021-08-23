@@ -1,3 +1,5 @@
+// This file is not used I think?
+
 import React from "react";
 import { connect } from "frontity";
 // import Link from "@frontity/components/link";

@@ -3,46 +3,6 @@ import { styled, connect } from "frontity"
 
 import Link from "../link"
 
-const MenuModal = ({ state }) => {
-  const parentItems = state.source.get(`/menu/${state.theme.menuUrl}/`).items
-
-  return (
-    <>
-      <MenuOverlay />
-      <MenuContent as="nav">
-        {parentItems.map((item) => {
-          const childItems = item.child_items
-          return (
-            <NavMenu key={item.ID}>
-              <NavItem>
-                <Link link={item.url}>
-                  {item.title}
-                </Link>
-                {childItems && (
-                  <>
-                    <NavArrow />                  
-                  </>
-                )}
-              </NavItem>
-              {childItems && (
-                <ChildMenu>
-                  {childItems.map((childItem) => {
-                    return (
-                      <NavItem key={childItem.ID} className="child-navitem">
-                        <Link link={childItem.url}>{childItem.title}</Link>
-                      </NavItem>
-                    )
-                  })}
-                </ChildMenu>
-              )}
-            </NavMenu>
-          )
-        })}
-      </MenuContent>
-    </>
-  )
-}
-
 const MenuOverlay = styled.div`
   background-color: #583666;
   width: 100vw;
@@ -94,5 +54,40 @@ const ChildMenu = styled.span`
   }
 `
 
+const MenuModal = ({ state }) => {
+  const parentItems = state.source.get(`/menu/${state.theme.menuUrl}/`).items
+
+  return (
+    <>
+      <MenuOverlay />
+      <MenuContent as="nav">
+        {parentItems.map((item) => {
+          const childItems = item.child_items
+          return (
+            <NavMenu key={item.ID}>
+              <NavItem>
+                <Link link={item.url}>{item.title}</Link>
+                {childItems && (
+                  <NavArrow />                  
+                )}
+              </NavItem>
+              {childItems && (
+                <ChildMenu>
+                  {childItems.map((childItem) => {
+                    return (
+                      <NavItem key={childItem.ID} className="child-navitem">
+                        <Link link={childItem.url}>{childItem.title}</Link>
+                      </NavItem>
+                    )
+                  })}
+                </ChildMenu>
+              )}
+            </NavMenu>
+          )
+        })}
+      </MenuContent>
+    </>
+  )
+}
 
 export default connect(MenuModal)

@@ -7,6 +7,12 @@ const getYear = () => {
   return year
 }
 
+const FooterContainer = styled.footer`
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+`
 
 const Footer = () => {  
   return (
@@ -17,10 +23,3 @@ const Footer = () => {
 }
 
 export default connect(Footer)
-
-const FooterContainer = styled.footer`
-  background-color: #fff;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 40px;
-`

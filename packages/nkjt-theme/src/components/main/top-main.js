@@ -7,7 +7,7 @@ import Header from "../header/header"
 import Main from "./main"
 import Footer from "../footer/footer"
 
-import LeaveButton from "./leave-button"
+import { LeaveButton } from "./leave-button"
 
 const TopMain = ({ state }) => {
   const data = state.source.get(state.router.link)

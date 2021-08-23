@@ -6,26 +6,6 @@ import Image from "../../assets/nkjt-1.png"
 import ButtonImage1 from "../../assets/nkjt-2.png"
 import ButtonImage2 from "../../assets/nkjt-3.png"
 
-const LandingPage = ({ state }) => {
-  const data = state.source.get(state.router.link)
-  return (
-    <MainContainer>
-      <HeroImage src={Image} />
-      <ButtonContainer>
-        <Button link="/hem">
-          <ButtonImage src={ButtonImage1} />
-        </Button>
-
-        <Button link="/joursamtal-via-webb">
-          <ButtonImage src={ButtonImage2} />
-        </Button>
-      </ButtonContainer>
-    </MainContainer>
-  )
-}
-
-export default connect(LandingPage)
-
 const MainContainer = styled.main`
   background: #583666;
   min-height: 100vh;
@@ -69,7 +49,6 @@ const Button = styled(Link)`
   }
 
   @media (min-width: 600px) {
-    /* width: 60%; */
     max-height: 500px;
   }
   @media (min-width: 800px) {
@@ -85,3 +64,21 @@ const ButtonImage = styled.img`
   border: 1px solid black;
   border-radius: 20px;
 `
+
+const LandingPage = ({ state }) => {
+  return (
+    <MainContainer>
+      <HeroImage src={Image} />
+      <ButtonContainer>
+        <Button link="/hem">
+          <ButtonImage src={ButtonImage1} />
+        </Button>
+        <Button link="/joursamtal-via-webb">
+          <ButtonImage src={ButtonImage2} />
+        </Button>
+      </ButtonContainer>
+    </MainContainer>
+  )
+}
+
+export default connect(LandingPage)

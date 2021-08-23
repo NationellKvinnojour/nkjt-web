@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import { connect, styled } from "frontity"
+import React from "react"
+import { styled } from "frontity"
 
 import theme from "../themeColors"
 import RunningImage from "../../assets/noun-running.svg"
@@ -7,15 +7,6 @@ import RunningImage from "../../assets/noun-running.svg"
 const leavePage = () => {
   location.replace('http://www.google.com')
   return false
-}
-
-const LeaveButton = () => {
-  return (
-    <Button onClick={() => leavePage()}>
-      <Image src={RunningImage}/>
-      LÄMNA SIDAN FORT
-      </Button>
-  )
 }
 
 const Button = styled.button`
@@ -51,4 +42,11 @@ const Image = styled.img`
   width: 50px;
 `
 
-export default LeaveButton
+export const LeaveButton = () => {
+  return (
+    <Button onClick={() => leavePage()}>
+      <Image src={RunningImage}/>
+      LÄMNA SIDAN FORT
+    </Button>
+  )
+}

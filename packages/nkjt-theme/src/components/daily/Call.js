@@ -71,11 +71,11 @@ export const Call = ({ roomName }) => {
   }, [videoRef])
 
   return (
-    <>
+    <div>
       <Header>{roomName}</Header>
       <VideoContainer height={height}>
         <Callframe ref={videoRef} />
       </VideoContainer>
-    </>
+    </div>
   )
 }

@@ -1,13 +1,15 @@
 import React from "react"
 import { connect, styled } from "frontity"
 
+const Text = styled.p`
+  padding: 60px;
+`
+
 const ErrorPage = ({ state }) => {
   const data = state.source.get(state.router.link)
-  console.log(data)
+
   return (
-    <>
-      <p>Oj då! Här fanns inget</p>
-    </>
+    <Text>Oj då! Här fanns inget...</Text>
   )
 }
 

@@ -18,4 +18,4 @@ const NkjtLink = ({ children, ...props }) => {
   )
 }
 
-export default connect(NkjtLink, {injectProps: false})
+export default connect(NkjtLink, { injectProps: false })
