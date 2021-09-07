@@ -4,8 +4,8 @@ const settings = {
     frontity: {
       url: "https://test.frontity.org",
       title: "NKJT",
-      description: "Nationell kvinnojour och stöd på teckenspråk"
-    }
+      description: "Nationell kvinnojour och stöd på teckenspråk",
+    },
   },
   packages: [
     {
@@ -17,8 +17,8 @@ const settings = {
             showOnList: false,
             showOnPost: false,
           },
-        }
-      }
+        },
+      },
     },
     {
       name: "@frontity/wp-source",
@@ -28,15 +28,14 @@ const settings = {
           homepage: "/",
           // Below you need to write your wordpress url
           // url: "http://localhost:8888",
-          url: "https://brunemalm.se/"
-        }
-      }
+          url: "https://api.nkjt.se/",
+        },
+      },
     },
     "@frontity/tiny-router",
     "@frontity/html2react",
-    "@aamodtgroup/frontity-contact-form-7"
+    "@aamodtgroup/frontity-contact-form-7",
+  ],
+};
 
-  ]
-}
-
-export default settings
+export default settings;
