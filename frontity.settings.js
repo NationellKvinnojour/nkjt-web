@@ -28,7 +28,7 @@ const settings = {
           homepage: "/",
           // Below you need to write your wordpress url
           // url: "http://localhost:8888",
-          url: "https://api.nkjt.se/",
+          url: "https://brunemalm.se/",
         },
       },
     },
