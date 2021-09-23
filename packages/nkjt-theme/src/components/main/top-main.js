@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import { connect, styled } from "frontity"
+import React from "react"
+import { connect } from "frontity"
 import Switch from "@frontity/components/switch"
 
 import LandingPage from "./landing-page"
@@ -14,19 +14,19 @@ const TopMain = ({ state }) => {
 
   return (
     <>
-    {!state.theme.isMobileMenuOpen &&
-      <LeaveButton/>
-    }
-    <Switch>
-      <LandingPage when={data.isHome} />
-      {!data.isHome && 
-        <>
-          <Header />
-          <Main />
-          <Footer />
-        </>
+      {!state.theme.isMobileMenuOpen &&
+        <LeaveButton/>
       }
-    </Switch>
+      <Switch>
+        {data.link === "/" ? (<LandingPage />)
+          :
+            (<>
+              <Header />
+              <Main />
+              <Footer />
+            </>)
+        }
+      </Switch>
     </>
   )
 }

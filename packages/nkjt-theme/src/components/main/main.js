@@ -7,19 +7,21 @@ import Post from "./post"
 import Page from "./page"
 
 import ErrorPage from "./error"
-import Home from "./home"
-import User from "../daily/User"
+
+import Header from "../header/header"
+import Footer from "../footer/footer"
 
 const Main = ({ state }) => {
   const data = state.source.get(state.router.link)
+
   return (
     <Switch>
+      <Header/>
       <List when={data.isArchive} />
       <Post when={data.isPost} />
-      <Page when={data.isPage} />
-      <Home when={data.isHomePage} />
-      <User when={data.isVideoPage} />
-      <ErrorPage when={data.isError} />
+      <Page when={data.isPage}/>
+      <ErrorPage when={data.isError}/>
+      <Footer />
     </Switch>
   )
 }
