@@ -129,7 +129,7 @@ const Home = ({ state }) => {
           <Text>Bli medlem i Nationell kvinnojour och stöd på teckenspråk och stöd Sveriges enda jourverksamhet för kvinnor på teckenspråk.</Text>
           <Button>
             <a
-              href="http://www.nkjt.se/st%C3%B6d-oss/bli-medlem-hos-nkjt-44501899"
+              href="https://www.nkjt.se/bli-medlem/"
               target="_blank"
               rel="noopener noreferrer">
               Klicka här för att bli medlem hos NKJT
