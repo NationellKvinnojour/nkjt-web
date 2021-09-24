@@ -10,8 +10,12 @@ const Heading = styled.h1`
   margin: 0;
 `
 
-const TextContainer = styled.p`
+const TextContainer = styled.div`
   padding: 40px 10vw;
+`
+
+const Bold = styled.span`
+  font-weight: bold;
 `
 
 const RoomContainer = styled.div`
@@ -66,7 +70,8 @@ const User = ({ state }) => {
     <RoomContainer>
       <Heading>JOURSAMTAL VIA WEBB</Heading>
       <TextContainer>
-        Vår samtalsjour på webben har öppet dagligen och du får prata med en av våra socionomer. Vid behov kan vi också hjälpa dig med kontakter i din hemkommun för att få hjälp och stöd. Vi kan också hjälpa dig att komma i kontakt med polis och andra myndigheter.
+        <p>Vår samtalsjour på webben har öppet <Bold>måndagar mellan 09.30-13:00</Bold> och du får prata med en av våra socionomer. Om du inte kan på måndagar, skicka mejl till <a href="mailto:stod@nationellkvinnojour.se">stod@nationellkvinnojour.se</a> eller skriv via kontaktformuläret som finns i fliken <a href="https://www.nkjt.se/kontakt/">KONTAKT</a> och boka tid andra veckodagar och tider som passar dig.</p>
+        <p>Vid behov kan vi också hjälpa dig med kontakter i din hemkommun för att få hjälp och stöd. Vi kan också hjälpa dig att komma i kontakt med polis och andra myndigheter.</p>
       </TextContainer>
       <Availability
         totalRooms={totalRooms}
