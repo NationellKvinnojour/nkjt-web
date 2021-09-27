@@ -65,19 +65,12 @@ const ButtonImage = styled.img`
   border-radius: 20px;
 `
 
-const LandingPage = ({ state, libraries }) => {
-  const data = state.source.get(state.router.link)
-  const page = state.source[data.type][data.id]
-  const Html2React = libraries.html2react.Component
-
-  console.log(page.content)
-
+const LandingPage = () => {
   return (
     <MainContainer>
-      {/* <Html2React html={page.content.rendered} /> */}
       <HeroImage src={Image} />
       <ButtonContainer>
-        <Button link="/vision">
+        <Button link="/om-oss">
           <ButtonImage src={ButtonImage1} />
         </Button>
         <Button link="/joursamtal-via-webb">
