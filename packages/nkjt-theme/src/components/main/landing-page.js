@@ -1,82 +1,75 @@
-import React, { useState } from "react"
+import React from "react"
 import { connect, styled } from "frontity"
-import Link from "@frontity/components/link"
-
-import Image from "../../assets/nkjt-1.png"
-import ButtonImage1 from "../../assets/nkjt-2.png"
-import ButtonImage2 from "../../assets/nkjt-3.png"
 
 const MainContainer = styled.main`
-  background: #583666;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
+  .landing-container {
+    min-height: 100vh;
 
-const ButtonContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+    a img {
+      border: 1px solid black;
+      border-radius: 20px;
+      max-width: 350px;
+      height: auto;
+    }
 
-  @media (min-width: 800px) {
-    flex-direction: row;
+    a span {
+      display: flex;
+      justify-content: center;
+      padding-bottom: 300px;
+    }
   }
-`
 
-const HeroImage = styled.img`
-  width: 80%;
-  padding: 20px;
-  text-align: center;
+  @media (min-width: 530px) {
+    .hero-image {
+      max-width: 500px;
+      margin: auto;
+    }
 
-  @media (min-width: 900px) {
-    max-width: 500px;
-  }
-`
-
-const Button = styled(Link)`
-  width: 100%;
-  height: 350px;
-  margin: 10px;
-  background: transparent;
-  border: none;
-  max-width: 400px;
-
-  @media (min-width: 400px) {
-    width: 70%;
-    height: 400px;
+    a img {
+      max-width: 250px;
+      height: auto;
+    }
   }
 
   @media (min-width: 600px) {
-    max-height: 500px;
+    .hero-image {
+      max-width: 550px;
+      padding-top: 80px;
+    }
+
+    .wp-block-columns {
+      flex-wrap: nowrap;
+      max-width: 550px;
+      margin: auto;
+    }
   }
-  @media (min-width: 800px) {
-    width: 40%;
-    height: 400px;
+
+  @media (min-width: 800px) { 
+    .hero-image {
+      padding-top: 40px;
+    }
+
+    a img {
+      max-width: 450px;
+    }
+  }
+  
+  @media (min-width: 900px) { 
+    .hero-image {
+      padding-top: 0;
+      padding-bottom: 20px;
+    }
   }
 `
 
-const ButtonImage = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border: 1px solid black;
-  border-radius: 20px;
-`
+const LandingPage = ({ state, libraries }) => {
+  const data = state.source.get(state.router.link)
+  const page = state.source[data.type][data.id]
+  const Html2React = libraries.html2react.Component
 
-const LandingPage = ({ state }) => {
   return (
     <MainContainer>
-      <HeroImage src={Image} />
-      <ButtonContainer>
-        <Button link="/hem">
-          <ButtonImage src={ButtonImage1} />
-        </Button>
-        <Button link="/joursamtal-via-webb">
-          <ButtonImage src={ButtonImage2} />
-        </Button>
-      </ButtonContainer>
+      <Html2React html={page.content.rendered} />
     </MainContainer>
   )
 }
