@@ -343,3 +343,7 @@ input[type="submit"] {
   padding: 10px 20px;
   cursor: pointer;
 }
+
+h1.has-background {
+  margin: 0;
+}
