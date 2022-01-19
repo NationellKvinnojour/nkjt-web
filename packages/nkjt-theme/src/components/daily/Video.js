@@ -51,7 +51,7 @@ const Video = ({ state }) => {
     const occupiedRooms = sessions.length
 
   return (
-    <RoomContainer>
+    <RoomContainer className="room-container">
       <Availability
         totalRooms={totalRooms}
         occupiedRooms={occupiedRooms}

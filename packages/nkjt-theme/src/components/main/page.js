@@ -17,6 +17,10 @@ const Content = styled.div`
     padding: 0 30px;
   }
 
+  > .room-container {
+    padding: 0;
+  }
+
   > ul {
     padding: 0 60px;
   }
